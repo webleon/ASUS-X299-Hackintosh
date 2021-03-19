@@ -62,6 +62,9 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
     * Once mapped make sure to replace the `USBInjectAll.kext` entry under `Kernel-Add` with `USBMap.kext`.  Also disable `XhciPortLimit` under `Kernel-Quirks`.
     
 # Changelog:
+## Updated required SSDTs (2021.03.19)
+* Replaced base SSDTs to the ones from the Dortania Guide
+
 ## Recommended BIOS Settings (2021.03.11)
 * Moved BIOS Settings back to BASE-EFI README.
 

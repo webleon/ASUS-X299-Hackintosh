@@ -105,6 +105,7 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 <p>
 
 `USBMap-WS X299 Sage 10G.zip` contains a full USB Mapping kext for the XHCI controller and both ASMedia USB 3.2 Gen 2 Controllers.
+
 ![](/Personal%20EFI%20Collection/WS%20X299%20Sage%2010G/Images/usbmapping.png)
 
 </p>
@@ -207,5 +208,4 @@ For the X550-AT2, the commands are:
 * [Apple](https://www.apple.com) : macOS
 * [Acidanthera](https://github.com/acidanthera) : OpencorePkg, kexts, etc.
 * [Dortania](https://github.com/dortania) : Opencore guide
-* [dracoflar](https://github.com/khronokernel) : Modified SSDT-EC-USBX, PLUG, and SBUS-MCHC files, SmallTree 211 patch, SSDT-RTC0 patch for macOS Big Sur
 * [Pavo](https://github.com/Pavo-IM) : AGPMInjector

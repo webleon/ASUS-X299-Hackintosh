@@ -22,9 +22,9 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 
 | Component        | Model                                | Notes |
 | ---------------- | ---------------------------------------|-------------------|
-| Motherboard | ASUS WS X299 Sage/10G | BIOS 3302 |
+| Motherboard | ASUS WS X299 Sage/10G | BIOS 3405 |
 | Processor | Intel i9-10980XE | |
-| CPU Cooler | Corsair H150i Pro RGB | |
+| CPU Cooler | Fractal Design Celsius+ S36 Dynamic | |
 | RAM | 4x16 Corsair Vengeance LPX 3200 Mhz | |
 | Boot Drive | Samsung 970 EVO 1 TB | |
 | Graphics Card | AMD Radeon Pro W5500 | |

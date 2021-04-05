@@ -11,7 +11,7 @@ The ASUS X299 Hackintosh repository contains OpenCore EFI distributions and rela
 | Personal EFI Collection | Contains personal custom EFIs for various boards. |
 
 # Personal Build
-Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/tree/master/Personal%20EFI%20Collection/WS%20X299%20Sage%2010G).
+Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/tree/main/Personal%20EFI%20Collection/WS%20X299%20Sage%2010G).
 
 ![](/Personal%20EFI%20Collection/WS%20X299%20Sage%2010G/Images/WSX299Sage10G.png)
 

@@ -3,10 +3,7 @@
 ![](/Personal%20EFI%20Collection/ROG%20Rampage%20VI%20Extreme%20Encore/Images/RampageVIExtremeEncore.png)
 
 ## Specifications
-<details>
-<summary>Components</summary>
-<p>
-
+### Components
 | Component        | Model                                | Notes |
 | ---------------- | ---------------------------------------|-------------------|
 | Motherboard | ASUS ROG Rampage VI Extreme Encore | BIOS 0901 |
@@ -19,13 +16,7 @@
 | Power Supply | Corsair HX 1000i | |
 | Case | Lian Li PC 011 Dynamic XL | |
 
-</p>
-</details>
-
-<details>
-<summary>PCIe Slot Layout</summary>
-<p>
-
+### PCIe Slot Layout
 | Slot | Speed | Device | Notes | 
 | ----- | ----- | ---------------------------------------|-------------------|
 | 1 | x16 | ASUS ROG Strix RTX 3090 OC | No graphics acceleration, disabled in macOS |
@@ -33,23 +24,13 @@
 | 3 | x16 | | |
 | 4 | x4 | Sapphire RX 580 Pulse 8 GB | Slot running at x4 due to DIMM.2_2 |
 
-
-</p>
-</details>
-
-<details>
-<summary>M.2 Layout</summary>
-<p>
-
+### M.2 Layout
 | Slot | Device | Notes | 
 | ----- | ---------------------------------------|-------------------|
 | M.2_1 | | Lower slot |
 | M.2_2 | Samsung 970 EVO Plus 2 TB | Higher slot |
 | DIMM.2_1 | | |
 | DIMM.2_2 | Samsung 970 EVO 1 TB | |
-
-</p>
-</details>
 
 ## What Works / What Doesn't Work
 - [x] Sleep / Wake
@@ -73,15 +54,9 @@
     * Due to some T2 chip dependancies on MacPro7,1 and iMacPro1,1 SMBIOS
     
 ## Screenshots
-<details>
-<summary>USB Mapping</summary>
-<p>
-
+### USB Mapping
 `USBMap-ROG Rampage VI Extreme Encore.zip` contains a full USB Mapping kext for the XHCI controller, both ASMedia USB 3.2 Gen 2 Controllers, and the ASMedia USB 3.2 Gen 2x2 Controller.  The Rampage VI Extreme Encore has a total of 18 ports on the XHCI controller so it's best to remove at least 3 ports to be at the 15 port limit.
 ![](/Personal%20EFI%20Collection/ROG%20Rampage%20VI%20Extreme%20Encore/Images/usbmapping.png)
-
-</p>
-</details>
 
 ## Changelog
 ### Update to OpenCore 0.6.7 (2021.03.01)

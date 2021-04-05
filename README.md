@@ -16,9 +16,7 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 ![](/Personal%20EFI%20Collection/WS%20X299%20Sage%2010G/Images/WSX299Sage10G.png)
 
 ## Specifications
-<details>
-<summary>Components</summary>
-<p>
+### Components
 
 | Component        | Model                                | Notes |
 | ---------------- | ---------------------------------------|-------------------|
@@ -32,13 +30,7 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 | Power Supply | Corsair RM 850x | |
 | Case | Lian Li PC 011 Dynamic | |
 
-</p>
-</details>
-
-<details>
-<summary>PCIe Slot Layout</summary>
-<p>
-
+### PCIe Slot Layout
 | Slot | Speed | Device | Notes | 
 | ----- | ----- | ---------------------------------------|-------------------|
 | 1 | x16 | | |
@@ -49,21 +41,12 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 | 6 | x8 | | |
 | 7 | x8 | | |
 
-</p>
-</details>
-
-<details>
-<summary>M.2/U.2 Layout</summary>
-<p>
-
+### M.2/U.2 Layout
 | Slot | Device | Notes | 
 | ----- | ---------------------------------------|-------------------|
 | U.2_1 | | |
 | M.2_1 | Broadcom BCM943602CDP | Vertical slot connected via [adapter](https://www.amazon.com/gp/product/B079NB8J3B/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) |
 | M.2_2 | Samsung 970 EVO 1 TB | Lower slot |
-
-</p>
-</details>
 
 ## What Works / What Doesn't Work
 - [x] Sleep / Wake
@@ -85,31 +68,23 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 - [x] USB Power
 - [ ] SideCar
     * Due to some T2 chip dependancies on MacPro7,1 and iMacPro1,1 SMBIOS
+    
+## Radeon Pro W5500 Issues
+1. macOS will randomly kernel panic and freeze on a green screen (HDMI) or black screen (DP).  macOS does not come back until a reboot.  Tried various versions of macOS Big Sur, SMBIOS (iMacPro1,1, MacPro7,1), different ram/XMP settings.  Kernel panics aren't occuring as often now but seems to crash about once a day now (Fresh boot after turned off at night).
+2. DP/HDMI audio sometimes does not work and audio selection is missing from macOS Sound Preferences.  Using motherboard audio as an alternative.
 
 ## Screenshots
-<details>
-<summary>System Report</summary>
-<p>
-
+### System Report
 ![](/Personal%20EFI%20Collection/WS%20X299%20Sage%2010G/Images/aboutthismac.png)
 ![](/Personal%20EFI%20Collection/WS%20X299%20Sage%2010G/Images/memory1.png)
 ![](/Personal%20EFI%20Collection/WS%20X299%20Sage%2010G/Images/memory2.png)
 ![](/Personal%20EFI%20Collection/WS%20X299%20Sage%2010G/Images/graphics.png)
 ![](/Personal%20EFI%20Collection/WS%20X299%20Sage%2010G/Images/pci.png)
 
-</p>
-</details>
-
-<details>
-<summary>USB Mapping</summary>
-<p>
-
+### USB Mapping
 `USBMap-WS X299 Sage 10G.zip` contains a full USB Mapping kext for the XHCI controller and both ASMedia USB 3.2 Gen 2 Controllers.
 
 ![](/Personal%20EFI%20Collection/WS%20X299%20Sage%2010G/Images/usbmapping.png)
-
-</p>
-</details>
 
 # Optional USB Peripherals for Internal USB 2.0 Devices
 * 1. [USB 3.0 20 Pin Female to USB 2.0 Pin Male Adapter](https://www.amazon.com/gp/product/B01MFB04JP/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
@@ -134,10 +109,7 @@ Intel 10 gigabit NICs such as the X540 or X550 (found on the WS X299 Sage/10G) d
 **[After EEPROM modding and SmallTree drivers: Driver Installed]**
 ![](/Resources/Images/eepromafter.png)
 
-<details>
-<summary>Requirements</summary>
-<p>
-
+## Requirements
 1. [Ubuntu 16.04 LTS](https://releases.ubuntu.com/16.04/)
     * Download the 64-bit PC (AMD64) desktop image
     * Newer versions of Ubuntu do not work.
@@ -148,13 +120,7 @@ Intel 10 gigabit NICs such as the X540 or X550 (found on the WS X299 Sage/10G) d
         * Download the macOS Catalina drivers for macOS Big Sur
     * [Sonnet macOS drivers](http://www.sonnettech.com/support/kb/kb.php?cat=513&expand=&action=a3#a3)
 
-</p>
-</details>
-
-<details>
-<summary>Instructions</summary>
-<p>
-
+## Instructions
 1. Install the Ubuntu 16.04 LTS ISO image to a flash drive using Rufus.
 2. Boot Ubuntu and click "Try Ubuntu without Installing".
     * Once Ubuntu is loaded, make sure that you have an Internet connection.
@@ -193,9 +159,6 @@ For the X550-AT2, the commands are:
         * `sudo ethtool -E enp180s0f1 magic 0x15638086 offset 0x240 value 0x43`
         * `sudo ethtool -E enp180s0f1 magic 0x15638086 offset 0x241 value 0x10`
 9.  Reboot back into macOS and install the appropriate drivers and your ethernet ports should be enabled!
-
-</p>
-</details>
 
 # Additional Kexts
 * [SmallTreeIntel82576](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases)

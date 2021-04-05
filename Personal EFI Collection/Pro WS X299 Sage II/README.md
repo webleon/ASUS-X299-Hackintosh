@@ -3,10 +3,7 @@
 ![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/ProWSX299SageII.png)
 
 ## Specifications
-<details>
-<summary>Components</summary>
-<p>
-
+### Components
 | Component        | Model                                | Notes |
 | ---------------- | ---------------------------------------|-------------------|
 | Motherboard | ASUS Pro WS X299 Sage II | BIOS 0901 |
@@ -19,13 +16,7 @@
 | Power Supply | Corsair RM 850x | |
 | Case | Lian Li PC 011 Dynamic | |
 
-</p>
-</details>
-
-<details>
-<summary>PCIe Slot Layout</summary>
-<p>
-
+### PCIe Slot Layout
 | Slot | Speed | Device | Notes | 
 | ----- | ----- | ---------------------------------------|-------------------|
 | 1 | x16 | | |
@@ -36,13 +27,7 @@
 | 6 | x8 | | |
 | 7 | x8 | Sapphire RX 580 Pulse 8 GB | |
 
-</p>
-</details>
-
-<details>
-<summary>M.2/U.2 Layout</summary>
-<p>
-
+### M.2/U.2 Layout
 | Slot | Device | Notes | 
 | ----- | ---------------------------------------|-------------------|
 | U.2_1 | | |
@@ -50,9 +35,6 @@
 | U.2_3 | | |
 | M.2_1 | Broadcom BCM943602CDP | Vertical slot connected via [adapter](https://www.amazon.com/gp/product/B079NB8J3B/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) |
 | M.2_2 | Samsung 970 EVO 1 TB | Lower slot |
-
-</p>
-</details>
 
 ## What Works / What Doesn't Work
 - [x] Sleep / Wake
@@ -75,27 +57,15 @@
     * Due to some T2 chip dependancies on MacPro7,1 and iMacPro1,1 SMBIOS
     
 ## Screenshots
-<details>
-<summary>System Report</summary>
-<p>
-
+### System Report
 ![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/aboutthismac.png)
 ![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/memory1.png)
 ![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/memory2.png)
 ![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/pci.png)
 
-</p>
-</details>
-
-<details>
-<summary>USB Mapping</summary>
-<p>
-
+### USB Mapping
 `USBMap-Pro WS X299 Sage II.zip` contains a full USB Mapping kext for the XHCI controller and both ASMedia USB 3.2 Gen 2 Controllers.  The Sage II has a total of 21 ports on the XHCI controller so it's best to remove at least 6 ports to be at the 15 port limit.
 ![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/usbmapping.png)
-
-</p>
-</details>
 
 ## Changelog
 ### Added GPRW method (2021.03.08)

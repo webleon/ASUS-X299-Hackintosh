@@ -1,7 +1,7 @@
 # BASE-EFI
 
 # Introduction
-The Base EFI folder contains a precompiled EFI that should be valid for all ASUS X299 motherboards.  It is currently built using OpenCore 0.6.6 with the OpenCanary GUI enabled following the Dortania OpenCore Vanilla Guide.
+The Base EFI folder contains a precompiled EFI that should be valid for all ASUS X299 motherboards.  It is currently built using OpenCore 0.6.8 with the OpenCanary GUI enabled following the Dortania OpenCore Vanilla Guide.
 
 # 1. Recommended BIOS Settings
 * Based off kgp's original X299 Clover guide [section B1) ASUS BIOS Configuration](https://www.tonymacx86.com/threads/imac-pro-x299-live-the-future-now-with-macos-10-14-mojave-successful-build-extended-guide.255082/)
@@ -13,22 +13,15 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
 ## Advanced
 ### CPU Configuration
 * MSR Lock Control - **[Disabled]**
-    
-    <details>
-    <summary>CPU Power Management Configuration</summary>
-    <p>
-
-    * Enhanced Intel SpeedStep Technology - Enabled
-    * Turbo Mode - Enabled
-    * Autonomous Core C-State - Enabled
-    * Enhanced Halt State (C1E) - Enabled
-    * CPU C6 Report - Enabled
-    * Package C State - C6(non Retention) state
-    * Intel(R) Speed Shift Technology - Enabled
-    * MFC Mode Override - OS Native Support
-    
-    </p>
-    </details>
+#### CPU Power Management Configuration
+* Enhanced Intel SpeedStep Technology - Enabled
+* Turbo Mode - Enabled
+* Autonomous Core C-State - Enabled
+* Enhanced Halt State (C1E) - Enabled
+* CPU C6 Report - Enabled
+* Package C State - C6(non Retention) state
+* Intel(R) Speed Shift Technology - Enabled
+* MFC Mode Override - OS Native Support
     
 ### System Agent (SA) Configuration
 * Intel VT for Directed I/O (VT-d) - Enabled
@@ -57,11 +50,19 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
             * SystemSerialNumber: Serial
             * SystemUUID: SmUUID
 3. USB:
-    The Base-EFI still has `XhciPortLimit` enabled with `USBInjectAll.kext`.  However with release of macOS 11.3 this will no longer be supported.  If you have not created your own usb kext, please install a version of macOS lower than 11.3 to create your own mapping.
     * Please use [this](https://dortania.github.io/OpenCore-Post-Install/usb/intel-mapping/intel.html) as a proper guide to map your USB ports.
     * Once mapped make sure to replace the `USBInjectAll.kext` entry under `Kernel-Add` with `USBMap.kext`.  Also disable `XhciPortLimit` under `Kernel-Quirks`.
     
 # Changelog:
+## OpenCore 0.6.8 (2021.04.05)
+Bootloader / Kexts:
+* Lilu 1.5.2
+* NVMeFix 1.0.6
+* WhateverGreen 1.4.9
+* AppleALC 1.5.9
+* VirtualSMC 1.2.2
+* Updated "Resources" files for OpenCanopy GUI
+
 ## Updated required SSDTs (2021.03.19)
 * Replaced base SSDTs to the ones from the Dortania Guide
 

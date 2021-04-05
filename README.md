@@ -45,8 +45,8 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 | Slot | Device | Notes | 
 | ----- | ---------------------------------------|-------------------|
 | U.2_1 | | |
-| M.2_1 | Broadcom BCM943602CDP | Vertical slot connected via [adapter](https://www.amazon.com/gp/product/B079NB8J3B/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1) |
-| M.2_2 | Samsung 970 EVO 1 TB | Lower slot |
+| M.2_1 | Samsung 970 EVO 1 TB | Vertical slot |
+| M.2_2 | Broadcom BCM943602CDP | Lower slot connected via [adapter](https://www.amazon.com/gp/product/B07R3XVD54/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) |
 
 ## What Works / What Doesn't Work
 - [x] Sleep / Wake

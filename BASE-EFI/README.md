@@ -8,7 +8,8 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
 * Reset to Default Settings before changing these settings
 
 ## AI Tweaker
-* AI Overclock Tuner - Enabled
+* AI Overclock Tuner - XMP
+* CPU SVID Support - Enabled
 
 ## Advanced
 ### CPU Configuration
@@ -25,11 +26,13 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
     
 ### System Agent (SA) Configuration
 * Intel VT for Directed I/O (VT-d) - Enabled
+### PCI Subsystem Settings
+* Above 4G Decoding - **[Enabled]**
+* Re-Size BAR Support - **[Disabled]**
 ### PCH Storage Configuration
 * SATA Mode Selection - AHCI
 
 ## Boot
-* Above 4G Decoding - **[On]**
 ### CSM (Compatability Support Module)
 * Launch CSM - **[Disabled]**
 ### Secure Boot

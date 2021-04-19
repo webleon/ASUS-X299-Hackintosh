@@ -39,18 +39,17 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 | 4 | x8 | | |
 | 5 | x8 | AMD Radeon Pro W5500 | |
 | 6 | x8 | | |
-| 7 | x8 | | |
+| 7 | x8 | Broadcom BCM943602CDP | |
 
 ### M.2/U.2 Layout
 | Slot | Device | Notes | 
 | ----- | ---------------------------------------|-------------------|
 | U.2_1 | | |
-| M.2_1 | Samsung 970 EVO 1 TB | Vertical slot |
-| M.2_2 | Broadcom BCM943602CDP | Lower slot connected via [adapter](https://www.amazon.com/gp/product/B07R3XVD54/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1) |
+| M.2_1 | | |
+| M.2_2 | Samsung 970 EVO 1 TB | |
 
 ## What Works / What Doesn't Work
 - [x] Sleep / Wake
-    * `Wake from Bluetooth` does not work with Wifi/BT adapter in M.2 slot.  If Wifi/BT Adapter is connected to a PCIe slot, sleep/wake works properly.
 - [x] Wifi and Bluetooth
 - [x] Handoff, Continuity, AirDrop, Continuity Camera, and Unlock with Apple Watch
 - [x] iMessage, FaceTime, App Store, iTunes Store
@@ -70,8 +69,29 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
     * Due to some T2 chip dependancies on MacPro7,1 and iMacPro1,1 SMBIOS
     
 ## Radeon Pro W5500 Issues
-1. macOS will randomly kernel panic and freeze on a green screen (HDMI) or black screen (DP).  macOS does not come back until a reboot.  Tried various versions of macOS Big Sur, SMBIOS (iMacPro1,1, MacPro7,1), different ram/XMP settings.  Kernel panics aren't occuring as often now but seems to crash about once a day now (Fresh boot after turned off at night).
-2. DP/HDMI audio sometimes does not work and audio selection is missing from macOS Sound Preferences.  Using motherboard audio as an alternative.
+Replaced RX 580 with a Radeon Pro W5500 and have encountered a couple issues.  The major issue appears to be an issue with AGPM.  Not sure if it's specific to the W5500 or just have an issue with my GPU so YMMV when using W5500.
+
+### 1. Kernel Panics with Green/Black screen
+macOS will randomly kernel panic and freeze (sometimes once a day, sometimes multiple) on a green screen (HDMI) or black screen (DP).  The computer will either stay on a green/black screen until manually rebooting or macOS will reboot automatically with a kp log. 
+
+Things I've tried:
+* Various versions of macOS Big Sur
+* Different SMBIOS (iMacPro1,1, MacPro7,1)
+* Different Ram/XMP settings
+* Enable/Disable Whatevergreen + boot-arg agdpmod=pikera
+* Enable/Disable AGPMInjector.kext
+
+#### Workarounds
+1. Keep a video open in a media player in the background. (Doesn't have to be continuously playing).
+2. Adjust device-properties to 5500XT instead of W5500.
+
+| Key | Class | Value |
+| :--- | :--- | :--- |
+| compatible | String | pci1002,7341 |
+| device-id | Data | 40730000 |
+
+### 2. Hit or miss DP/HDMI audio
+DP/HDMI audio sometimes does not work and audio selection is missing from macOS Sound Preferences on consecutive reboots.  Not sure if this is due to using DP to HDMI adapters as I haven't tried testing with just DP cables attached.  Using motherboard audio as an alternative or spoof device properties to 5500XT.
 
 ## Screenshots
 ### System Report

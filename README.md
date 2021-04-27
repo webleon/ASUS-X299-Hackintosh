@@ -81,17 +81,20 @@ Things I've tried:
 * Enable/Disable Whatevergreen + boot-arg agdpmod=pikera
 * Enable/Disable AGPMInjector.kext
 
-#### Workarounds
-1. Keep a video open in a media player in the background. (Doesn't have to be continuously playing).
-2. Adjust device-properties to 5500XT instead of W5500.
+### 2. Hit or miss DP/HDMI audio
+DP/HDMI audio sometimes does not work and audio selection is missing from macOS Sound Preferences on consecutive reboots.  Not sure if this is due to using DP to HDMI adapters as I haven't tried testing with just DP cables attached.
 
+### Workarounds
+After some troubleshooting, I found that keeping a video open in the background seems to prevent kernel panics.  The video does not have to be continuously playing so I just had a small video clip set to open on login.
+
+The better workaround I found was to do a device spoof to a 5500XT with WEG+agdpmod=pikera flags.  WEG+agdpmod=pikera isn't required on SMBIOS MacPro7,1 but have it enabled just in case.
 | Key | Class | Value |
 | :--- | :--- | :--- |
 | compatible | String | pci1002,7341 |
 | device-id | Data | 40730000 |
+| agdpmod | String | Pikera |
 
-### 2. Hit or miss DP/HDMI audio
-DP/HDMI audio sometimes does not work and audio selection is missing from macOS Sound Preferences on consecutive reboots.  Not sure if this is due to using DP to HDMI adapters as I haven't tried testing with just DP cables attached.  Using motherboard audio as an alternative or spoof device properties to 5500XT.
+Also added the Radeon boost SSDT located [here](https://www.tonymacx86.com/threads/amd-radeon-performance-enhanced-ssdt.296555/).  With device spoofing, DP/HDMI audio is more stable as well although the monitor/tv has to be on at boot for audio to work (at least with DP to HDMI adapters, haven't tested DP to DP connections).  This isn't really an issue for me since I only have audio connected to my main monitor.
 
 ## Screenshots
 ### System Report

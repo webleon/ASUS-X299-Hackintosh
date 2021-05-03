@@ -20,7 +20,7 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 
 | Component        | Model                                | Notes |
 | ---------------- | ---------------------------------------|-------------------|
-| Motherboard | ASUS WS X299 Sage/10G | BIOS 3405 |
+| Motherboard | ASUS WS X299 Sage/10G | BIOS 3302 |
 | Processor | Intel i9-10980XE | |
 | CPU Cooler | Fractal Design Celsius+ S36 Dynamic | |
 | RAM | 4x16 Corsair Vengeance LPX 3200 Mhz | |
@@ -31,10 +31,10 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 | Case | Lian Li PC 011 Dynamic | |
 
 ### PCIe Slot Layout
-| Slot | Speed | Device | Notes | 
+| Slot | Speed | Device | Notes |
 | ----- | ----- | ---------------------------------------|-------------------|
 | 1 | x16 | | |
-| 2 | x8 | | |
+| 2 | x8 | ASUS ThunderboltEX 4 | Downgraded to BIOS 3302, causes error code 62 on BIOS 3405 |
 | 3 | x8 | | |
 | 4 | x8 | | |
 | 5 | x8 | AMD Radeon Pro W5500 | |
@@ -42,7 +42,7 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 | 7 | x8 | Broadcom BCM943602CDP | |
 
 ### M.2/U.2 Layout
-| Slot | Device | Notes | 
+| Slot | Device | Notes |
 | ----- | ---------------------------------------|-------------------|
 | U.2_1 | | |
 | M.2_1 | | |
@@ -65,14 +65,15 @@ Personal EFI and USB mapping can be found [here](https://github.com/shinoki7/ASU
 - [x] Native NVRAM
 - [x] CPU Power Management
 - [x] USB Power
+- [x] Thunderbolt 3/4 Hot plug
 - [ ] SideCar
     * Due to some T2 chip dependancies on MacPro7,1 and iMacPro1,1 SMBIOS
-    
+
 ## Radeon Pro W5500 Issues
 Replaced RX 580 with a Radeon Pro W5500 and have encountered a couple issues.  The major issue appears to be an issue with AGPM.  Not sure if it's specific to the W5500 or just have an issue with my GPU so YMMV when using W5500.
 
 ### 1. Kernel Panics with Green/Black screen
-macOS will randomly kernel panic and freeze (sometimes once a day, sometimes multiple) on a green screen (HDMI) or black screen (DP).  The computer will either stay on a green/black screen until manually rebooting or macOS will reboot automatically with a kp log. 
+macOS will randomly kernel panic and freeze (sometimes once a day, sometimes multiple) on a green screen (HDMI) or black screen (DP).  The computer will either stay on a green/black screen until manually rebooting or macOS will reboot automatically with a kp log.
 
 Things I've tried:
 * Various versions of macOS Big Sur
@@ -88,6 +89,7 @@ DP/HDMI audio sometimes does not work and audio selection is missing from macOS 
 After some troubleshooting, I found that keeping a video open in the background seems to prevent kernel panics.  The video does not have to be continuously playing so I just had a small video clip set to open on login.
 
 The better workaround I found was to do a device spoof to a 5500XT with WEG+agdpmod=pikera flags.  WEG+agdpmod=pikera isn't required on SMBIOS MacPro7,1 but have it enabled just in case.
+
 | Key | Class | Value |
 | :--- | :--- | :--- |
 | compatible | String | pci1002,7341 |
@@ -95,6 +97,34 @@ The better workaround I found was to do a device spoof to a 5500XT with WEG+agdp
 | agdpmod | String | Pikera |
 
 Also added the Radeon boost SSDT located [here](https://www.tonymacx86.com/threads/amd-radeon-performance-enhanced-ssdt.296555/).  With device spoofing, DP/HDMI audio is more stable as well although the monitor/tv has to be on at boot for audio to work (at least with DP to HDMI adapters, haven't tested DP to DP connections).  This isn't really an issue for me since I only have audio connected to my main monitor.
+
+## ASUS Thunderbolt EX4 (Thunderbolt 4) (WIP)
+For Thunderbolt 4, currently the only available Thunderbolt 4 PCIe card is the ASUS ThunderboltEX 4.  
+
+### Current Observations
+Note these observations are based on the devices tested listed below.  YMMV and issues I'm running into may just be due to these devices.
+
+* Initially ran into issues where card was causing kernel panics in macOS and error code 62 on reboots.  Found this issue on the latest BIOS with resizable bar support.  Downgraded BIOS to 3302 and the card works normally.
+* Thunderbolt header may not necessarily be needed or jumped.  macOS recognizes the card on boot without a header plugged in.
+* The 6 pin power and USB 2.0 internal cable have to be connected.  
+* Thunderbolt settings have to be enabled in BIOS.  The device loaded in a different slot with Thunderbolt disabled but it showed 'No driver installed'.
+* SSDT is required for device to be recognized.
+
+### What Works
+* Thunderbolt 3 hot-plug
+* USB 2.0 hot-plug/cold-plug
+* USB 3.1 Gen 2 hot-plug/cold-plug
+* Sleep
+
+### What Doesn't Work
+* Thunderbolt 3 cold/warm boot
+
+### Devices Tested:
+* Sabrent Thunderbolt 3 M.2 NVMe SSD Enclosure (EC-T3NS)
+
+### To-Do:
+* Extract original firmware and try installing custom firrmware for Thunderbolt Local Node support.
+* Try more thunderbolt 3/4 devices.
 
 ## Screenshots
 ### System Report
@@ -120,7 +150,7 @@ Also added the Radeon boost SSDT located [here](https://www.tonymacx86.com/threa
     * [StarTech USB 3.1 PCIe Card](https://www.amazon.com/gp/product/B01I39D15A/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
     * Can use the internal header on the card for the case USB ports or to connect internal devices.
     * NOTE: Wake from Bluetooth devices does not work with this so it's best to connect Bluetooth to one of the motherboard ports.
-    
+
 # Intel 10 Gigabit NICs with Small Tree macOS Drivers
 Intel 10 gigabit NICs such as the X540 or X550 (found on the WS X299 Sage/10G) do not have official support in macOS.  However with modding the EEPROM, we can modify the Subsystem ID to 000a to be compatible with the SmallTree macOS Drivers.  Original method by Squuiid outlined in this [MacRumors thread](https://forums.macrumors.com/threads/modify-retail-intel-10gbe-nics-to-use-small-tree-macos-drivers.1968456/).  
 
@@ -160,7 +190,7 @@ Intel 10 gigabit NICs such as the X540 or X550 (found on the WS X299 Sage/10G) d
 For the X550-AT2, the commands are:
     * `sudo ethtool -E enp180s0f0 magic 0x15638086 offset 0x242 value 0x0a`
     *  `sudo ethtool -E enp180s0f0 magic 0x15638086 offset 0x243 value 0x00`
-    
+
     * `sudo ethtool -E enp180s0f1 magic 0x15638086 offset 0x242 value 0x0a`
     * `sudo ethtool -E enp180s0f1 magic 0x15638086 offset 0x243 value 0x00`
 ![](/Resources/Images/afteroffset.png)
@@ -178,7 +208,7 @@ For the X550-AT2, the commands are:
     * Note if you want to revert back to SmallTree or Intel drivers, we will modify the Subsystem-Vendor-ID back to `1043`.  For the X550-AT2, the commands are:
         * `sudo ethtool -E enp180s0f0 magic 0x15638086 offset 0x240 value 0x43`
         * `sudo ethtool -E enp180s0f0 magic 0x15638086 offset 0x241 value 0x10`
-        
+
         * `sudo ethtool -E enp180s0f1 magic 0x15638086 offset 0x240 value 0x43`
         * `sudo ethtool -E enp180s0f1 magic 0x15638086 offset 0x241 value 0x10`
 9.  Reboot back into macOS and install the appropriate drivers and your ethernet ports should be enabled!
@@ -187,7 +217,7 @@ For the X550-AT2, the commands are:
 * [SmallTreeIntel82576](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases)
   * Enables ethernet for I211 NICs
   * Version 1.3 is for macOS Catalina, Version 1.2.5 is for macOS 10.13 and 10.14
-* [AGPMInjector](https://github.com/Pavo-IM/AGPMInjector) 
+* [AGPMInjector](https://github.com/Pavo-IM/AGPMInjector)
   * Apple Graphics Power Management injector
 
 # Credits

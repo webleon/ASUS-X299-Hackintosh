@@ -23,7 +23,7 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
 * Package C State - C6(non Retention) state
 * Intel(R) Speed Shift Technology - Enabled
 * MFC Mode Override - OS Native Support
-    
+
 ### System Agent (SA) Configuration
 * Intel VT for Directed I/O (VT-d) - Enabled
 ### PCI Subsystem Settings
@@ -39,10 +39,10 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
 * OS Type - Other OS
 
 # 2. Configuration
-1. Ethernet: 
+1. Ethernet:
     * For WS X299 Sage/10G users replace IntelMausi with [SmallTreeIntel8259x](https://small-tree.com/support/downloads/10-gigabit-ethernet-driver-download-page/) kext and update the kext entry.  NOTE: Ubuntu EEPROM modding outlined [here](https://github.com/shinoki7/ASUS-X299-Hackintosh#intel-10-gigabit-nics-with-small-tree-macos-drivers) is required for this kext to work
     * For users with I211 NICs like the X299 Deluxe, copy the [SmallTreeIntel82576](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases) kext to your EFI folder and add a new kext entry under `Kernel-Add`
-2. PlatformInfo: 
+2. PlatformInfo:
     The Base EFI contains two config.plist depending on which SMBIOS you choose.  Rename the SMBIOS you prefer to 'config.plist' and delete the other one.  
     You will need to create your own Serial Number and SMUUID.  Instructions can be found [here](https://dortania.github.io/OpenCore-Install-Guide/config-HEDT/skylake-x.html#platforminfo)
     * Remember to adjust the Type depending on which SMBIOS you are using.  Either iMacPro1,1 or MacPro7,1
@@ -52,11 +52,30 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
             * MLB: Board Serial
             * SystemSerialNumber: Serial
             * SystemUUID: SmUUID
-3. USB:
+
+# 3. Post-Install
+1. USB:
     * Please use [this](https://dortania.github.io/OpenCore-Post-Install/usb/intel-mapping/intel.html) as a proper guide to map your USB ports.
     * Once mapped make sure to replace the `USBInjectAll.kext` entry under `Kernel-Add` with `USBMap.kext`.  Also disable `XhciPortLimit` under `Kernel-Quirks`.
-    
+2. Custom Memory (SMBIOS MacPro7,1 only):
+    * Depending on how many DIMM slots on your motherboard are filled, rename the Memory Dictionary under `PlatformInfo` and remove the other one.  (I.E. I only have 4 DIMM slots filled, so I renamed `#Memory - 4 DIMMS` to `Memory` and deleted `#Memory - 8 DIMMS`).
+    * Expand `Devices` under `PlatformInfo-Memory-Devices` and fill in the proper Manufacturer/Part Number/Serial Number/Size/Speed properties that match your memory.  For 4 DIMMS, this would be BANK 7/9/6/4. For 8 DIMMS, this would be BANK 7/8/9/10/6/5/4/3.
+    * Once mapped make sure to remove `RestrictEvents.kext` under `Kernel-Add` and also delete the kext in your `Kexts` folder under `OC-Kexts`.
+
+
 # Changelog:
+## OpenCore 0.6.9 (2021.05.03)
+Bootloader / Kexts:
+* Lilu 1.5.3
+* NVMeFix 1.0.7
+* AppleALC 1.6.0
+* VirtualSMC 1.2.3
+* IntelMausi 1.0.6
+* RestrictEvents 1.0.1
+
+config.plist Changes:
+* Added Custom Memory examples for SMBIOS MacPro7,1.  For more info, refer to [post](https://www.tonymacx86.com/threads/gigabyte-b550-vision-d-thunderbolt-3-amd-ryzen-7-3700x-amd-rx-5600-xt.304553/post-2246642).
+
 ## OpenCore 0.6.8 (2021.04.05)
 Bootloader / Kexts:
 * Lilu 1.5.2
@@ -92,5 +111,3 @@ config.plist Changes:
 If you were previously using Bootstrap refer to this [link](https://dortania.github.io/OpenCore-Post-Install/multiboot/bootstrap.html#prerequisites/) for instructions on how to upgrade. My previous EFis had it disabled.
 * UEFI -> Drivers -> Added OpenHfsPlus.efi (Note: Commented out)
 Note that OpenHfsPlus.efi is now bundled with OpenCore but HfsPlus.efi is still enabled for compatibility reasons and is still faster than OpenHfsPlus.efi.
-
-

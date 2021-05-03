@@ -1,6 +1,6 @@
 # ROG Rampage VI Extreme Encore
 
-![](/Personal%20EFI%20Collection/ROG%20Rampage%20VI%20Extreme%20Encore/Images/RampageVIExtremeEncore.png)
+![](/Archived/ROG%20Rampage%20VI%20Extreme%20Encore/Images/RampageVIExtremeEncore.png)
 
 ## Specifications
 ### Components
@@ -17,7 +17,7 @@
 | Case | Lian Li PC 011 Dynamic XL | |
 
 ### PCIe Slot Layout
-| Slot | Speed | Device | Notes | 
+| Slot | Speed | Device | Notes |
 | ----- | ----- | ---------------------------------------|-------------------|
 | 1 | x16 | ASUS ROG Strix RTX 3090 OC | No graphics acceleration, disabled in macOS |
 | 2 | x4 | | Slot is disabled due to M.2_2 |
@@ -25,7 +25,7 @@
 | 4 | x4 | Sapphire RX 580 Pulse 8 GB | Slot running at x4 due to DIMM.2_2 |
 
 ### M.2 Layout
-| Slot | Device | Notes | 
+| Slot | Device | Notes |
 | ----- | ---------------------------------------|-------------------|
 | M.2_1 | | Lower slot |
 | M.2_2 | Samsung 970 EVO Plus 2 TB | Higher slot |
@@ -52,11 +52,11 @@
 - [x] USB Power
 - [ ] SideCar
     * Due to some T2 chip dependancies on MacPro7,1 and iMacPro1,1 SMBIOS
-    
+
 ## Screenshots
 ### USB Mapping
 `USBMap-ROG Rampage VI Extreme Encore.zip` contains a full USB Mapping kext for the XHCI controller, both ASMedia USB 3.2 Gen 2 Controllers, and the ASMedia USB 3.2 Gen 2x2 Controller.  The Rampage VI Extreme Encore has a total of 18 ports on the XHCI controller so it's best to remove at least 3 ports to be at the 15 port limit.
-![](/Personal%20EFI%20Collection/ROG%20Rampage%20VI%20Extreme%20Encore/Images/usbmapping.png)
+![](/Archived/ROG%20Rampage%20VI%20Extreme%20Encore/Images/usbmapping.png)
 
 ## Changelog
 ### Update to OpenCore 0.6.7 (2021.03.01)

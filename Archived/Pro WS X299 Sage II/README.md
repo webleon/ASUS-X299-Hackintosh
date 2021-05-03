@@ -1,6 +1,6 @@
 # Pro WS X299 Sage II
 
-![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/ProWSX299SageII.png)
+![](/Archived/Pro%20WS%20X299%20Sage%20II/Images/ProWSX299SageII.png)
 
 ## Specifications
 ### Components
@@ -17,7 +17,7 @@
 | Case | Lian Li PC 011 Dynamic | |
 
 ### PCIe Slot Layout
-| Slot | Speed | Device | Notes | 
+| Slot | Speed | Device | Notes |
 | ----- | ----- | ---------------------------------------|-------------------|
 | 1 | x16 | | |
 | 2 | x8 | | |
@@ -28,7 +28,7 @@
 | 7 | x8 | Sapphire RX 580 Pulse 8 GB | |
 
 ### M.2/U.2 Layout
-| Slot | Device | Notes | 
+| Slot | Device | Notes |
 | ----- | ---------------------------------------|-------------------|
 | U.2_1 | | |
 | U.2_2 | | |
@@ -55,17 +55,17 @@
 - [x] USB Power
 - [ ] SideCar
     * Due to some T2 chip dependancies on MacPro7,1 and iMacPro1,1 SMBIOS
-    
+
 ## Screenshots
 ### System Report
-![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/aboutthismac.png)
-![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/memory1.png)
-![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/memory2.png)
-![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/pci.png)
+![](/Archived/Pro%20WS%20X299%20Sage%20II/Images/aboutthismac.png)
+![](/Archived/Pro%20WS%20X299%20Sage%20II/Images/memory1.png)
+![](/Archived/Pro%20WS%20X299%20Sage%20II/Images/memory2.png)
+![](/Archived/Pro%20WS%20X299%20Sage%20II/Images/pci.png)
 
 ### USB Mapping
 `USBMap-Pro WS X299 Sage II.zip` contains a full USB Mapping kext for the XHCI controller and both ASMedia USB 3.2 Gen 2 Controllers.  The Sage II has a total of 21 ports on the XHCI controller so it's best to remove at least 6 ports to be at the 15 port limit.
-![](/Personal%20EFI%20Collection/Pro%20WS%20X299%20Sage%20II/Images/usbmapping.png)
+![](/Archived/Pro%20WS%20X299%20Sage%20II/Images/usbmapping.png)
 
 ## Changelog
 ### Added GPRW method (2021.03.08)

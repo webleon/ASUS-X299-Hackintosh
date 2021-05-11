@@ -58,8 +58,19 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
     * Please use [this](https://dortania.github.io/OpenCore-Post-Install/usb/intel-mapping/intel.html) as a proper guide to map your USB ports.
     * Once mapped make sure to replace the `USBInjectAll.kext` entry under `Kernel-Add` with `USBMap.kext`.  Also disable `XhciPortLimit` under `Kernel-Quirks`.
 2. Custom Memory (SMBIOS MacPro7,1 only):
-    * Depending on how many DIMM slots on your motherboard are filled, rename the Memory Dictionary under `PlatformInfo` and remove the other one.  (I.E. I only have 4 DIMM slots filled, so I renamed `#Memory - 4 DIMMS` to `Memory` and deleted `#Memory - 8 DIMMS`).
-    * Expand `Devices` under `PlatformInfo-Memory-Devices` and fill in the proper Manufacturer/Part Number/Serial Number/Size/Speed properties that match your memory.  For 4 DIMMS, this would be BANK 7/9/6/4. For 8 DIMMS, this would be BANK 7/8/9/10/6/5/4/3.
+    * Depending on how many DIMM slots on your motherboard are filled, rename the Memory Dictionary under `PlatformInfo` and remove the other one.  (I.E. I only have 4 DIMM slots filled, so I renamed `#Memory - 4 DIMMS` to `Memory` and deleted `#Memory - 8 DIMMS` and `#Memory - 2 DIMMS`).
+    * Expand `Devices` under `PlatformInfo-Memory-Devices` and adjust the following properties that match your Memory.
+      * Manufacturer
+      * Part Number
+      * Serial Number
+      * Size
+      * Speed
+
+    For 2 DIMMS, this would be BANK 5/3.
+
+    For 4 DIMMS, this would be BANK 7/9/6/4.
+
+    For 8 DIMMS, this would be BANK 7/8/9/10/6/5/4/3.
     * Once mapped make sure to remove `RestrictEvents.kext` under `Kernel-Add` and also delete the kext in your `Kexts` folder under `OC-Kexts`.
 
 

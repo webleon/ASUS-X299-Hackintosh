@@ -7,11 +7,11 @@
 
 | Component        | Model                                | Notes |
 | ---------------- | ---------------------------------------|-------------------|
-| Motherboard | ASUS WS X299 Sage/10G | BIOS 3302 |
+| Motherboard | ASUS WS X299 Sage/10G | BIOS 3405 |
 | Processor | Intel i9-10980XE | |
 | CPU Cooler | Fractal Design Celsius+ S36 Dynamic | |
 | RAM | 4x16 Corsair Vengeance LPX 3200 Mhz | |
-| Boot Drive | Samsung 970 EVO 1 TB | |
+| Boot Drive | Sabrent Rocket 1 TB | |
 | Graphics Card | AMD Radeon Pro W5500 | |
 | Wifi/Bluetooth Card | Broadcom BCM943602CDP |  |
 | Power Supply | Corsair RM 850x | |
@@ -21,7 +21,7 @@
 | Slot | Speed | Device | Notes |
 | ----- | ----- | ---------------------------------------|-------------------|
 | 1 | x16 | | |
-| 2 | x8 | ASUS ThunderboltEX 4 | Downgraded to BIOS 3302, causes error code 62 on BIOS 3405 |
+| 2 | x8 | | |
 | 3 | x8 | | |
 | 4 | x8 | | |
 | 5 | x8 | AMD Radeon Pro W5500 | |
@@ -33,7 +33,7 @@
 | ----- | ---------------------------------------|-------------------|
 | U.2_1 | | |
 | M.2_1 | | |
-| M.2_2 | Samsung 970 EVO 1 TB | |
+| M.2_2 | Sabrent Rocket 1 TB | |
 
 ## What Works / What Doesn't Work
 - [x] Sleep / Wake
@@ -52,7 +52,6 @@
 - [x] Native NVRAM
 - [x] CPU Power Management
 - [x] USB Power
-- [x] Thunderbolt 3/4 Hot plug
 - [ ] SideCar
     * Due to some T2 chip dependancies on MacPro7,1 and iMacPro1,1 SMBIOS
 
@@ -99,6 +98,8 @@ Also added the Radeon boost SSDT located [here](https://www.tonymacx86.com/threa
 ![](/Personal%20EFI/Images/usbmapping.png)
 
 ## Changelog
+- Update to OpenCore 0.7.0 (2021.06.07)
+    * Removed WEG from EFI since not needed, also removed ThunderboltEX 4 
 - Update to OpenCore 0.6.9 (2021.05.03)
     * Initial support for ThunderboltEX 4 card
 - Changed device properties for W5500 to RX 5500XT (2021.04.19)

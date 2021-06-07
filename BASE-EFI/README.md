@@ -1,7 +1,7 @@
 # BASE-EFI
 
 # Introduction
-The Base EFI folder contains a precompiled EFI that should be valid for all ASUS X299 motherboards.  It is currently built using OpenCore 0.6.8 with the OpenCanary GUI enabled following the Dortania OpenCore Vanilla Guide.
+The Base EFI folder contains a precompiled EFI that should be valid for all ASUS X299 motherboards.  It is currently built using OpenCore 0.7.0 with the OpenCanary GUI enabled following the Dortania OpenCore Vanilla Guide.
 
 # 1. Recommended BIOS Settings
 * Based off kgp's original X299 Clover guide [section B1) ASUS BIOS Configuration](https://www.tonymacx86.com/threads/imac-pro-x299-live-the-future-now-with-macos-10-14-mojave-successful-build-extended-guide.255082/)
@@ -75,6 +75,18 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
 
 
 # Changelog:
+## OpenCore 0.7.0 (2021.06.07)
+Bootloader / Kexts:
+* NVMeFix 1.0.8
+* AppleALC 1.6.1
+* VirtualSMC 1.2.4
+* RestrictEvents 1.0.2
+* WhateverGreen 1.5.0
+* Updated "Resources" files for OpenCanopy GUI
+
+config.plist Changes:
+* Adjusted PickerAttributes to `17` and PickerVariant to `Acidanthera\GoldenGate`
+
 ## OpenCore 0.6.9 (2021.05.03)
 Bootloader / Kexts:
 * Lilu 1.5.3

@@ -10,34 +10,6 @@ The ASUS X299 Hackintosh repository contains OpenCore EFI distributions and rela
 | Custom BIOS Collection | Contains modified BIOS files that have custom boot logos |
 | Personal EFI | Contains information about personal build |
 
-# ASUS Thunderbolt EX4 (Thunderbolt 4) (WIP)
-For Thunderbolt 4, currently the only available Thunderbolt 4 PCIe card is the ASUS ThunderboltEX 4.  
-
-## Current Observations
-Note these observations are based on the devices tested listed below.  YMMV and issues I'm running into may just be due to these devices.
-
-* Initially ran into issues where card was causing kernel panics in macOS and error code 62 on reboots.  Found this issue on the latest BIOS with resizable bar support.  Downgraded BIOS to 3302 and the card works normally.
-* Thunderbolt header may not necessarily be needed or jumped.  macOS recognizes the card on boot without a header plugged in.
-* The 6 pin power and USB 2.0 internal cable have to be connected.  
-* Thunderbolt settings have to be enabled in BIOS.  The device loaded in a different slot with Thunderbolt disabled but it showed 'No driver installed'.
-* SSDT is required for device to be recognized.
-
-## What Works
-* Thunderbolt 3 hot-plug
-* USB 2.0 hot-plug/cold-plug
-* USB 3.1 Gen 2 hot-plug/cold-plug
-* Sleep
-
-## What Doesn't Work
-* Thunderbolt 3 cold/warm boot
-
-## Devices Tested
-* Sabrent Thunderbolt 3 M.2 NVMe SSD Enclosure (EC-T3NS)
-
-## To-Do
-* Extract original firmware and try installing custom firrmware for Thunderbolt Local Node support.
-* Try more thunderbolt 3/4 devices.
-
 # Optional USB Peripherals for Internal USB 2.0 Devices
 * 1. [USB 3.0 20 Pin Female to USB 2.0 Pin Male Adapter](https://www.amazon.com/gp/product/B01MFB04JP/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
     * This adapter converts the internal USB 3.0 19 pin header to a USB 2.0 9 pin.

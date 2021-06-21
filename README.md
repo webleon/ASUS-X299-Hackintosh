@@ -11,7 +11,7 @@ The ASUS X299 Hackintosh repository contains OpenCore EFI distributions and rela
 | Personal EFI | Contains information about personal build |
 
 # macOS Monterey Beta Installation
-macOS Monterey currently does not boot with VirtualSMC.kext and CpuTscSync.kext.  Replaced these with FakeSMC.kext and TSCAdjustReset.kext in order to boot.
+macOS Monterey currently does not boot with CpuTscSync.kext.  Replaced with TSCAdjustReset.kext and adjusted `IOCPUNumber` to `0` located [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/blob/main/BASE-EFI/Kexts/TSCAdjustReset/TSCAdjustReset-0.kext.zip) in order to boot.
 
 # Optional USB Peripherals for Internal USB 2.0 Devices
 * 1. [USB 3.0 20 Pin Female to USB 2.0 Pin Male Adapter](https://www.amazon.com/gp/product/B01MFB04JP/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)

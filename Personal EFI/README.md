@@ -1,4 +1,5 @@
 # Personal Build
+ASUS WS X299 Sage/10G
 
 ![](/Personal%20EFI/Images/WSX299Sage10G.png)
 
@@ -56,7 +57,7 @@
     * Due to some T2 chip dependancies on MacPro7,1 and iMacPro1,1 SMBIOS
 
 ## Radeon Pro W5500 Issues
-Replaced RX 580 with a Radeon Pro W5500 and have encountered a couple issues.  The major issue appears to be an issue with AGPM.  Not sure if it's specific to the W5500 or just have an issue with my GPU so YMMV when using W5500.
+Replaced RX 580 with a Radeon Pro W5500 and have encountered a couple issues.  The major issue appears to be an issue with AGPM.  Not sure if it's specific to the W5500 or just have an issue with my GPU so YMMV when using a W5500.
 
 ### 1. Kernel Panics with Green/Black screen
 macOS will randomly kernel panic and freeze (sometimes once a day, sometimes multiple) on a green screen (HDMI) or black screen (DP).  The computer will either stay on a green/black screen until manually rebooting or macOS will reboot automatically with a kp log.
@@ -74,7 +75,7 @@ DP/HDMI audio sometimes does not work and audio selection is missing from macOS 
 ### Workarounds
 After some troubleshooting, I found that keeping a video open in the background seems to prevent kernel panics.  The video does not have to be continuously playing so I just had a small video clip set to open on login.
 
-The better workaround I found was to do a device spoof to a 5500XT with WEG+agdpmod=pikera flags.  WEG+agdpmod=pikera isn't required on SMBIOS MacPro7,1 but have it enabled just in case.
+The better workaround I found was to do a device spoof to a 5500XT.
 
 | Key | Class | Value |
 | :--- | :--- | :--- |
@@ -99,7 +100,7 @@ Also added the Radeon boost SSDT located [here](https://www.tonymacx86.com/threa
 
 ## Changelog
 - Update to OpenCore 0.7.0 (2021.06.07)
-    * Removed WEG from EFI since not needed, also removed ThunderboltEX 4 
+    * Removed WEG from EFI since not needed, also removed ThunderboltEX 4
 - Update to OpenCore 0.6.9 (2021.05.03)
     * Initial support for ThunderboltEX 4 card
 - Changed device properties for W5500 to RX 5500XT (2021.04.19)

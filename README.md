@@ -8,10 +8,13 @@ The ASUS X299 Hackintosh repository contains OpenCore EFI distributions and rela
 | :------------- | :---------- |
 | BASE-EFI | OpenCore EFI precompiled with the OpenCanary GUI enabled that should be valid for all ASUS X299 boards. |
 | Custom BIOS Collection | Contains modified BIOS files that have custom boot logos |
-| Personal EFI | Contains information about personal build |
+| Personal EFI | Contains information about personal build using the ASUS WS X299 Sage/10G |
 
 # macOS Monterey Beta Installation
-macOS Monterey currently does not boot with CpuTscSync.kext.  Replaced with TSCAdjustReset.kext and adjusted `IOCPUNumber` to `0` located [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/blob/main/BASE-EFI/Kexts/TSCAdjustReset/TSCAdjustReset-0.kext.zip) in order to boot.
+macOS Monterey Beta 1 currently does not boot with CpuTscSync.kext.  
+Options to boot:
+* 1. Replace CpuTscSync.kext with TSCAdjustReset.kext and adjust `IOCPUNumber` to `0` located [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/blob/main/BASE-EFI/Kexts/TSCAdjustReset/TSCAdjustReset-0.kext.zip) in order to boot.
+* 2. Replace CpuTscSync.Kext with TSCAdjustReset.kext and replace VirtualSMC.kext with FakeSMC.kext.
 
 # Optional USB Peripherals for Internal USB 2.0 Devices
 * 1. [USB 3.0 20 Pin Female to USB 2.0 Pin Male Adapter](https://www.amazon.com/gp/product/B01MFB04JP/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)

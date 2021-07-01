@@ -88,9 +88,14 @@ Also added the Radeon boost SSDT located [here](https://www.tonymacx86.com/threa
 ## Screenshots
 ### System Report
 ![](/Personal%20EFI/Images/aboutthismac.png)
+### Memory
 ![](/Personal%20EFI/Images/memory1.png)
 ![](/Personal%20EFI/Images/memory2.png)
+### Audio
+![](/Personal%20EFI/Images/audio.png)
+### GPU
 ![](/Personal%20EFI/Images/graphics.png)
+### PCI
 ![](/Personal%20EFI/Images/pci.png)
 
 ### USB Mapping
@@ -99,6 +104,8 @@ Also added the Radeon boost SSDT located [here](https://www.tonymacx86.com/threa
 ![](/Personal%20EFI/Images/usbmapping.png)
 
 ## Changelog
+- Update to OpenCore 0.7.1-Dev (2021.07.01)
+    * Dev builds to support macOS Monterey.  Also switched from CpuTscSync.kext to TSCAdjustReset.kext
 - Update to OpenCore 0.7.0 (2021.06.07)
     * Removed WEG from EFI since not needed, also removed ThunderboltEX 4
 - Update to OpenCore 0.6.9 (2021.05.03)

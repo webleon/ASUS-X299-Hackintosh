@@ -1,7 +1,7 @@
 # BASE-EFI
 
 # Introduction
-The Base EFI folder contains a precompiled EFI that should be valid for all ASUS X299 motherboards.  It is currently built using OpenCore 0.7.1 with the OpenCanary GUI enabled following the Dortania OpenCore Vanilla Guide.
+The Base EFI folder contains a precompiled EFI that should be valid for all ASUS X299 motherboards.  It is currently built using OpenCore 0.7.0 with the OpenCanary GUI enabled following the Dortania OpenCore Vanilla Guide.
 
 # 1. Recommended BIOS Settings
 * Originally based off kgp's original X299 Clover guide [section B1) ASUS BIOS Configuration](https://www.tonymacx86.com/threads/imac-pro-x299-live-the-future-now-with-macos-10-14-mojave-successful-build-extended-guide.255082/) but modified for newer BIOS revisions.  It's recommended to use a newer BIOS release.
@@ -78,7 +78,7 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
 
 # Extras
 ## macOS Monterey Installation Notes
-- macOS Monterey currently does not boot with CpuTscSync.kext.  Recommended to replace CpuTscSync.kext with TSCAdjustReset.kext.  Also recommended to upgrade to OpenCore 0.7.1 + and associated Lilu kexts.
+- macOS Monterey currently does not boot with CpuTscSync.kext so replace CpuTscSync.kext with TSCAdjustReset.kext.  Also upgrade to OpenCore 0.7.1 + and associated Lilu kexts.
 
 # Changelog:
 ## OpenCore 0.7.0 (2021.06.07)

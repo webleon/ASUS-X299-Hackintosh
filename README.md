@@ -6,10 +6,11 @@ The ASUS X299 Hackintosh repository contains OpenCore EFI distributions and rela
 # Repository Folders
 | Folder | Description |
 | :------------- | :---------- |
-| BASE-EFI | OpenCore EFI precompiled with the OpenCanary GUI enabled that should be valid for all ASUS X299 boards. |
+| BASE-EFI | OpenCore EFI precompiled with the OpenCanary GUI enabled that should be valid for all ASUS X299 boards |
 | Custom BIOS Collection | Contains modified BIOS files that have custom boot logos |
-| Personal EFI | Contains information about personal build using the ASUS WS X299 Sage/10G |
+| Personal Build | Contains information about personal build using the ASUS WS X299 Sage/10G |
 | Thunderbolt | Contains information about setting up Thunderbolt 3/4 |
+| USB Kexts | Contains mapped USB kexts |
 
 # Optional USB Peripherals for Internal USB 2.0 Devices
 * 1. [USB 3.0 20 Pin Female to USB 2.0 Pin Male Adapter](https://www.amazon.com/gp/product/B01MFB04JP/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)

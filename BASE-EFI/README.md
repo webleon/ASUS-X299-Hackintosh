@@ -1,10 +1,10 @@
 # BASE-EFI
 
 # Introduction
-The Base EFI folder contains a precompiled EFI that should be valid for all ASUS X299 motherboards.  It is currently built using OpenCore 0.7.0 with the OpenCanary GUI enabled following the Dortania OpenCore Vanilla Guide.
+The Base EFI folder contains a pre-built EFI that should be valid for all ASUS X299 motherboards.  It is built using my personal build as a baseline and is up to date using OpenCore 0.7.1 with the OpenCanary GUI following the Dortania OpenCore Vanilla Guide.
 
 # 1. Recommended BIOS Settings
-* Originally based off kgp's original X299 Clover guide [section B1) ASUS BIOS Configuration](https://www.tonymacx86.com/threads/imac-pro-x299-live-the-future-now-with-macos-10-14-mojave-successful-build-extended-guide.255082/) but modified for newer BIOS revisions.  It's recommended to use a newer BIOS release.
+* Originally based off kgp's original X299 Clover guide [section B1) ASUS BIOS Configuration](https://www.tonymacx86.com/threads/imac-pro-x299-live-the-future-now-with-macos-10-14-mojave-successful-build-extended-guide.255082/) but modified for the newest BIOS revisions.  It's recommended to use a newer BIOS release.
 * Reset to Default Settings before modifying these settings
 
 ## AI Tweaker
@@ -40,12 +40,12 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
 
 # 2. Configuration
 1. Ethernet:
-    * For WS X299 Sage/10G users replace IntelMausi with [SmallTreeIntel8259x](https://small-tree.com/support/downloads/10-gigabit-ethernet-driver-download-page/) kext and update the kext entry.  NOTE: Ubuntu EEPROM modding outlined [here](https://github.com/shinoki7/ASUS-X299-Hackintosh#intel-10-gigabit-nics-with-small-tree-macos-drivers) is required for this kext to work
-    * For users with I211 NICs like the X299 Deluxe, copy the [SmallTreeIntel82576](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases) kext to your EFI folder and add a new kext entry under `Kernel-Add`
+    * WS X299 Sage/10G users will need to replace IntelMausi with [SmallTreeIntel8259x](https://small-tree.com/support/downloads/10-gigabit-ethernet-driver-download-page/) kext and update the kext entry.  NOTE: Ubuntu EEPROM modding outlined [here](https://github.com/shinoki7/ASUS-X299-Hackintosh#intel-10-gigabit-nics-with-small-tree-macos-drivers) is required for this kext to work
+    * I211 NICs users like the X299 Deluxe, copy the [SmallTreeIntel82576](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases) kext to your EFI folder and add a new kext entry under `Kernel-Add`
 2. TSCAdjustReset:
     * Replace TSCAdjustReset.kext in your EFI Folder with the version matching your core count located [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/tree/main/BASE-EFI/Kexts/TSCAdjustReset).
 3. PlatformInfo:
-    The Base EFI contains two config.plist depending on which SMBIOS you choose.  Rename the SMBIOS you prefer to 'config.plist' and delete the other one.  
+    The Base EFI contains two config.plist (iMacPro1,1 and MacPro7,1).  Rename the config.plist file with the SMBIOS you prefer to 'config.plist' and delete the other one.  
     You will need to create your own Serial Number and SMUUID.  Instructions can be found [here](https://dortania.github.io/OpenCore-Install-Guide/config-HEDT/skylake-x.html#platforminfo).
     * Remember to adjust the Type depending on which SMBIOS you are using.  Either iMacPro1,1 or MacPro7,1
     * NOTE: MacPro7,1 only works on Catalina and higher.
@@ -58,10 +58,10 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
 # 3. Post-Install
 1. USB:
     * Please use [this](https://dortania.github.io/OpenCore-Post-Install/usb/intel-mapping/intel.html) as a proper guide to map your USB ports.
-    * Once mapped make sure to replace the `USBInjectAll.kext` entry under `Kernel-Add` with `USBMap.kext`.  Also disable `XhciPortLimit` under `Kernel-Quirks`.
+    * Once mapped, make sure to replace the `USBInjectAll.kext` entry under `Kernel-Add` with `USBMap.kext`.  Also disable `XhciPortLimit` under `Kernel-Quirks`.
     * NOTE: The `XhciPortLimit` quirk may not work on macOS 11.3+ so it's recommended to install an older version to map and then update.
 2. Custom Memory (SMBIOS MacPro7,1 only):
-    * Depending on how many DIMM slots on your motherboard are filled, rename the Memory Dictionary under `PlatformInfo` and remove the other one.  (I.E. I only have 4 DIMM slots filled, so I renamed `#Memory - 4 DIMMS` to `Memory` and deleted `#Memory - 8 DIMMS` and `#Memory - 2 DIMMS`).
+    * Depending on how many memory DIMM slots on your motherboard are filled, rename the Memory Dictionary under `PlatformInfo` and remove the other one.  (I.E. I only have 4 DIMM slots filled, so I renamed `#Memory - 4 DIMMS` to `Memory` and deleted `#Memory - 8 DIMMS` and `#Memory - 2 DIMMS`).
     * Expand `Devices` under `PlatformInfo-Memory-Devices` and adjust the following properties that match your Memory.
       * Manufacturer
       * Part Number
@@ -78,7 +78,12 @@ The Base EFI folder contains a precompiled EFI that should be valid for all ASUS
 
 # Extras
 ## macOS Monterey Installation Notes
-- macOS Monterey currently does not boot with CpuTscSync.kext so replace CpuTscSync.kext with TSCAdjustReset.kext.  Also upgrade to OpenCore 0.7.1 + and associated Lilu kexts.
+### Required
+* Replace CpuTscSync.kext with TSCAdjustReset.kexts
+* OpenCore EFI compatible with macOS Big Sur although recommended to upgrade to OpenCore 0.7.1 or newer and associated Lilu kexts for the latest support.
+
+### Tips
+* macOS Monterey update may get stuck in a reboot loop and then fail to install. Modify your config.plist and change `SecureBootModel` to 'Disabled' under `Misc-Security`. When the update is complete, you can change this back to 'Default'.
 
 # Changelog:
 ## OpenCore 0.7.0 (2021.06.07)

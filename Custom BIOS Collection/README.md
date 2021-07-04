@@ -1,7 +1,7 @@
 # Custom BIOS Collection
 
 # Introduction
-The Custom BIOS collection folder contains modified BIOS that have custom boot logos and/or other modifications.  These are separated into different folders with a description of what was modified.  A guide to create your own boot logo can be located [here](https://climbjoe.tv/how-to-change-your-mainboard-boot-logo-image-to-custom-imac-pro-image-logo/) and tutorial on how to flash [here](https://www.tonymacx86.com/threads/x299-big-sur-support.302143/post-2165360).  **[Use at your own discretion!]**
+The Custom BIOS collection folder contains modified BIOS .CAP files that have custom boot logos and/or other modifications.  A guide to create your own boot logo can be located [here](https://climbjoe.tv/how-to-change-your-mainboard-boot-logo-image-to-custom-imac-pro-image-logo/) and a tutorial on how to flash the bios is located [here](https://www.tonymacx86.com/threads/x299-big-sur-support.302143/post-2165360).  **[Proceed at your own risk!]**
 
 # BIOS Collection
 | BIOS Folder | Description | Credits |
@@ -10,4 +10,4 @@ The Custom BIOS collection folder contains modified BIOS that have custom boot l
 
 
 ## Credits
-* izo1 - Special thanks to izo1 for discovering this and how to modify the logo.
+* izo1 - Credits for finding guide and making apple logo image.

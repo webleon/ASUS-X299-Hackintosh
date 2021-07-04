@@ -57,10 +57,10 @@ ASUS WS X299 Sage/10G
     * Due to some T2 chip dependancies on MacPro7,1 and iMacPro1,1 SMBIOS
 
 ## Radeon Pro W5500 Issues
-Replaced RX 580 with a Radeon Pro W5500 and have encountered a couple issues.  The major issue appears to be an issue with AGPM.  Not sure if it's specific to the W5500 or just have an issue with my GPU so YMMV when using a W5500.
+While the Radeon Pro W5500 is supported OOB, I have been running into two major issues.  The major issue appears to related to AGPM (Apple Graphics Power Management).  I have heard success stories from other users with the W5500 but none on the X299 platform.  I'm not sure if these issues are due to a misconfiguration and/or the X299 platform or just specific to my GPU.
 
 ### 1. Kernel Panics with Green/Black screen
-macOS will randomly kernel panic and freeze (sometimes once a day, sometimes multiple) on a green screen (HDMI) or black screen (DP).  The computer will either stay on a green/black screen until manually rebooting or macOS will reboot automatically with a kp log.
+macOS will randomly kernel panic and freeze (sometimes once a day, sometimes multiple) with a green screen (HDMI) or black screen (DP).  The computer will either stay on a green/black screen until manually rebooting or macOS will reboot automatically with a kp log.
 
 Things I've tried:
 * Various versions of macOS Big Sur
@@ -70,12 +70,12 @@ Things I've tried:
 * Enable/Disable AGPMInjector.kext
 
 ### 2. Hit or miss DP/HDMI audio
-DP/HDMI audio sometimes does not work and audio selection is missing from macOS Sound Preferences on consecutive reboots.  Not sure if this is due to using DP to HDMI adapters as I haven't tried testing with just DP cables attached.
+DP/HDMI audio sometimes does not work and audio selection is missing from macOS Sound Preferences on consecutive reboots.  Not sure if this is due to my DP to HDMI adapters as I haven't tried testing with just DP cables attached.
 
 ### Workarounds
 After some troubleshooting, I found that keeping a video open in the background seems to prevent kernel panics.  The video does not have to be continuously playing so I just had a small video clip set to open on login.
 
-The better workaround I found was to do a device spoof to a 5500XT.
+The better workaround I found was to adjust the Device Properties to device spoof to a 5500XT.
 
 | Key | Class | Value |
 | :--- | :--- | :--- |
@@ -84,6 +84,8 @@ The better workaround I found was to do a device spoof to a 5500XT.
 | agdpmod | String | Pikera |
 
 Also added the Radeon boost SSDT located [here](https://www.tonymacx86.com/threads/amd-radeon-performance-enhanced-ssdt.296555/).  With device spoofing, DP/HDMI audio is more stable as well although the monitor/tv has to be on at boot for audio to work (at least with DP to HDMI adapters, haven't tested DP to DP connections).  This isn't really an issue for me since I only have audio connected to my main monitor.
+
+With the combination of the Radeon boost SSDT and Device Properties adjustments, the amount of kps have reduced significantly and I rarely run into the issues anymore.  Newer versions of macOS Big Sur and Monterey also appear to be more stable.
 
 ## Screenshots
 ### System Report

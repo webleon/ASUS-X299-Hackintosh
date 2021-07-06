@@ -8,7 +8,7 @@ ASUS WS X299 Sage/10G
 
 | Component        | Model                                | Notes |
 | ---------------- | ---------------------------------------|-------------------|
-| Motherboard | ASUS WS X299 Sage/10G | BIOS 3405 |
+| Motherboard | ASUS WS X299 Sage/10G | BIOS 3302 - Thunderbolt USB 3.0 ports do not work on 3405 with flashed card
 | Processor | Intel i9-10980XE | |
 | CPU Cooler | Fractal Design Celsius+ S36 Dynamic | |
 | RAM | 4x16 Corsair Vengeance LPX 3200 Mhz | |
@@ -21,11 +21,11 @@ ASUS WS X299 Sage/10G
 ### PCIe Slot Layout
 | Slot | Speed | Device | Notes |
 | ----- | ----- | ---------------------------------------|-------------------|
-| 1 | x16 | | |
-| 2 | x8 | | |
+| 1 | x16 | AMD Radeon Pro W5500 | |
+| 2 | x8 | Gigabyte GC-Titan Ridge V2.0 | Thunderbolt enabled in BIOS |
 | 3 | x8 | | |
 | 4 | x8 | | |
-| 5 | x8 | AMD Radeon Pro W5500 | |
+| 5 | x8 | | |
 | 6 | x8 | | |
 | 7 | x8 | Broadcom BCM943602CDP | |
 
@@ -53,6 +53,7 @@ ASUS WS X299 Sage/10G
 - [x] Native NVRAM
 - [x] CPU Power Management
 - [x] USB Power
+- [x] Thunderbolt 3 hot-plug
 - [ ] SideCar
     * Due to some T2 chip dependancies on MacPro7,1 and iMacPro1,1 SMBIOS
 
@@ -99,3 +100,5 @@ With the combination of the Radeon boost SSDT and Device Properties adjustments,
 ![](/Personal%20Build/Images/graphics.png)
 ### PCI
 ![](/Personal%20Build/Images/pci.png)
+### Thunderbolt
+![](/Personal%20Build/Images/tbbus.png)

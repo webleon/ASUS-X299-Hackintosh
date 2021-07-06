@@ -86,7 +86,7 @@ Switching from Standard to Extended is optional, but it brings your system more 
   * [Flashing SPI ROM Chips using 3.3V CH341A Programmer](https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/post-2161463)
 * Patched Thunderbolt Firmware files
   * [Repository of Patched Thunderbolt Firmware Files](https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/page-1640#post-2087524)
-    * Currently using DESIGNARE-Z390-NVM33-Elias64Fr.bin
+    * Currently using GC-Titan-Ridge-V2.0-Mod-NVM50-CaseySJ.bin
 * Additional Resources
   * [Gigabyte Designare Z390 (Thunderbolt 3) + i7-9700K + AMD RX 580](https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/)
 

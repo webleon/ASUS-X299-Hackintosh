@@ -95,6 +95,8 @@ Remember to adjust the Type depending on which SMBIOS you are using.  Either iMa
 * macOS Monterey update may get stuck in a reboot loop and then fail to install. Modify your config.plist and change `SecureBootModel` to 'Disabled' under `Misc-Security`. When the update is complete, you can change this back to 'Default'.
 
 # Changelog:
+## Updated required SSDTs (2021.07.07)
+* Reverted required SSDTs to the ones by khronokernel since was getting boot errors with BIOS 3405.
 ## OpenCore 0.7.1 (2021.07.05)
 Bootloader / Kexts:
 * Lilu 1.5.4

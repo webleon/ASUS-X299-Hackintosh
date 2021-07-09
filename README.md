@@ -27,12 +27,12 @@ The ASUS X299 Hackintosh repository contains OpenCore EFI distributions and rela
 # Intel 10 Gigabit NICs with Small Tree macOS Drivers
 Intel 10 gigabit NICs such as the X540 or X550 (found on the WS X299 Sage/10G) do not have official support in macOS.  However with modding the EEPROM, we can modify the Subsystem ID to 000a to be compatible with the SmallTree macOS Drivers.  Original method by Squuiid outlined in this [MacRumors thread](https://forums.macrumors.com/threads/modify-retail-intel-10gbe-nics-to-use-small-tree-macos-drivers.1968456/).  
 
-**[The instructions below are outlined for the X550-AT2 found on the WS X299 Sage/10G].  Other Intel NICs may have different commands and/or offsets.  [I assume no responsibility or liability for any damage that may occur so proceed at your own risk!]**
+**The instructions below are outlined for the X550-AT2 found on the WS X299 Sage/10G].  Other Intel NICs may have different commands and/or offsets.  [I assume no responsibility or liability for any damage that may occur so proceed at your own risk!**
 
-**[Before EEPROM modding: No Driver Installed]**
+**Before EEPROM modding: No Driver Installed**
 ![](/Resources/Images/eeprombefore.png)
 
-**[After EEPROM modding and SmallTree drivers: Driver Installed]**
+**After EEPROM modding and SmallTree drivers: Driver Installed**
 ![](/Resources/Images/eepromafter.png)
 
 ## Requirements

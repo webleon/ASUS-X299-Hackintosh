@@ -114,29 +114,29 @@ Once you reboot, you should have the Thunderbolt Bus pane properly populated and
   * Have had mixed results trying various NVM firmware versions.  The XHC Controller does not even load on the latest BIOS with Resizable Bar support.
   * Workaround: Running BIOS 3302 with jumped pins.
 
-## 5. Thunderbolt 4
+# 5. Thunderbolt 4
 For Thunderbolt 4, there are 3 PCIe Thunderbolt cards available using the Maple Ridge controller.  The information below is based on my testing with the ASUS ThunderboltEX 4.
 
-### Current Observations
+## Current Observations
 Note these observations are based on the devices tested listed below.  YMMV and issues I'm running into may just be due to these devices.
  * Thunderbolt header may not necessarily be needed or jumped.  macOS recognizes the card on boot without a header plugged in.
  * The 6 pin power and USB 2.0 internal cable have to be connected.  
  * Thunderbolt settings have to be enabled in BIOS.  The Thunderbolt devices load in a different slot with Thunderbolt BIOS settings disabled but the device showed 'No driver installed'.
  * SSDT is required for Thunderbolt devices to be recognized.
 
-### What Works
+## What Works
  * Thunderbolt 3 hot-plug
  * USB 2.0 hot-plug/cold-plug
  * USB 3.2 Gen 2 hot-plug/cold-plug
  * Sleep
 
-### What Doesn't Work
+## What Doesn't Work
  * Thunderbolt 3 cold/warm boot
 
-### Devices Tested
+## Devices Tested
  * Sabrent Thunderbolt 3 M.2 NVMe SSD Enclosure (EC-T3NS)
 
-### To-Do
+## To-Do
  * Extract original firmware and try installing custom firmware for Thunderbolt Local Node support.
  * Try more Thunderbolt 3/4 devices.
 

@@ -22,10 +22,10 @@ ASUS WS X299 Sage/10G
 | Slot | Speed | Device | Notes |
 | ----- | ----- | ---------------------------------------|-------------------|
 | 1 | x16 | AMD Radeon Pro W5500 | |
-| 2 | x8 | Gigabyte GC-Titan Ridge V2.0 | Thunderbolt enabled in BIOS |
+| 2 | x8 | | |
 | 3 | x8 | | |
 | 4 | x8 | | |
-| 5 | x8 | | |
+| 5 | x8 | Gigabyte GC-Titan Ridge V2.0 | |
 | 6 | x8 | | |
 | 7 | x8 | Broadcom BCM943602CDP | |
 
@@ -33,7 +33,7 @@ ASUS WS X299 Sage/10G
 | Slot | Device | Notes |
 | ----- | ---------------------------------------|-------------------|
 | U.2_1 | | |
-| M.2_1 | | |
+| M.2_1 | Samsung 970 EVO 1 TB | |
 | M.2_2 | Sabrent Rocket 1 TB | |
 
 ## What Works / What Doesn't Work
@@ -91,13 +91,20 @@ With the combination of the Radeon boost SSDT and Device Properties adjustments,
 ## Screenshots
 ### System Report
 ![](/Personal%20Build/Images/aboutthismac.png)
+![](/Personal%20Build/Images/overview.png)
 ### Memory
 ![](/Personal%20Build/Images/memory1.png)
 ![](/Personal%20Build/Images/memory2.png)
 ### Audio
 ![](/Personal%20Build/Images/audio.png)
+### Ethernet
+![](/Personal%20Build/Images/ethernet.png)
 ### GPU
 ![](/Personal%20Build/Images/graphics.png)
+### NVME
+![](/Personal%20Build/Images/nvme.png)
+### USB
+![](/Personal%20Build/Images/usb.png)
 ### PCI
 ![](/Personal%20Build/Images/pci.png)
 ### Thunderbolt

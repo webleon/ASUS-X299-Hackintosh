@@ -102,14 +102,14 @@ Once you reboot, you should have the Thunderbolt Bus pane properly populated and
   * IOReg showing hot plug SSDT adjustments
   ![](/Thunderbolt/Images/Thunderbolt-tbbus-AfterSSDT.png)
 
-## What Works
+### What Works
 * Thunderbolt 3 hot-plug
 * USB 2.0 hot-plug/cold-plug
 * USB 3.2 Gen 2 cold-plug/warm
 * USB 3.2 Gen 2 hot-plug
 * Sleep
 
-## What Doesn't Work
+### What Doesn't Work
 * USB 3.2 Gen 2 on macOS 11.3 or higher
   * Have had mixed results trying various NVM firmware versions.  The XHC Controller does not even load on the latest BIOS with Resizable Bar support.
   * Workaround: Running BIOS 3302 with jumped pins.

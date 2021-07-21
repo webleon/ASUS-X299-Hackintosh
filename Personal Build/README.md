@@ -27,17 +27,18 @@ ASUS WS X299 Sage/10G
 | 4 | x8 | | |
 | 5 | x8 | Gigabyte GC-Titan Ridge V2.0 | |
 | 6 | x8 | | |
-| 7 | x8 | Broadcom BCM943602CDP | |
+| 7 | x8 |  | |
 
 ### M.2/U.2 Layout
 | Slot | Device | Notes |
 | ----- | ---------------------------------------|-------------------|
 | U.2_1 | | |
-| M.2_1 | Samsung 970 EVO 1 TB | |
-| M.2_2 | Sabrent Rocket 1 TB | |
+| M.2_1 | Sabrent Rocket 1 TB | |
+| M.2_2 | Broadcom BCM943602CDP | Using [M.2 NGFF Adapter](https://www.amazon.com/gp/product/B07R3XVD54/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1) |
 
 ## What Works / What Doesn't Work
 - [x] Sleep / Wake
+    * Wake via Bluetooth does not work since using M.2 NGFF adapter for Bluetooth.
 - [x] Wifi and Bluetooth
 - [x] Handoff, Continuity, AirDrop, Continuity Camera, and Unlock with Apple Watch
 - [x] iMessage, FaceTime, App Store, iTunes Store

@@ -55,7 +55,7 @@ The BASE-EFI is currently configured using the MacPro7,1 SMBIOS.  Please review 
       * **NOTE**: Ubuntu EEPROM modding outlined [here](https://github.com/shinoki7/ASUS-X299-Hackintosh#intel-10-gigabit-nics-with-small-tree-macos-drivers) is required for this kext to work
     * I211 NICs users like the X299 Deluxe, copy the [SmallTreeIntel82576](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases) kext to your EFI folder and add a new kext entry.
 2. TSCAdjustReset:
-    * Replace TSCAdjustReset.kext in your EFI Folder with the version matching your core count located [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/tree/main/BASE-EFI/Kexts/TSCAdjustReset).
+    * Replace TSCAdjustReset.kext in your EFI Folder with the version matching your core count located [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/tree/main/Kexts/TSCAdjustReset).
 3. RestrictEvents:
     * If you are using the iMacPro1,1 SMBIOS, you can delete this entry.
 

@@ -1,63 +1,62 @@
 # Thunderbolt
 
 # 1. Introduction
-The Thunderbolt folder contains information on how to configure your Thunderbolt 3/4 cards for support in macOS.  While Alpine Ridge and Maple Ridge cards are supported, the Titan Ridge card (specifically the Gigabyte GC-Titan Ridge V1.0/2.0) is highly preferred as it has the most support.  Typically, one thunderbolt card is officially supported on most motherboards but it is possible to use more than one Thunderbolt PCIe card in a system.  However the other cards may not be as stable as the one configured in the BIOS.
+The Thunderbolt folder contains information on how to configure your Thunderbolt 3/4 cards for support in macOS.  While Alpine Ridge and Maple Ridge cards are supported, the Titan Ridge card (specifically the Gigabyte GC-Titan Ridge V1.0/2.0) is highly preferred as it has the most support.  Typically, one thunderbolt card is officially supported on most motherboards but it is possible to use more than one Thunderbolt PCIe card in a system.  However, additional cards may not be as stable as the one configured in the BIOS.
 
 # 2. BIOS Settings
 BIOS settings listed below are configured for the first add-in or built-in Thunderbolt card.  If your motherboard does not have a Thunderbolt header you can skip this section.
 
-## Advanced
-### Thunderbolt(TM) Configuration
-* TBT Root port Selector - PCIe slot Thunderbolt card is in
-* Thunderbolt Usb Support - Disabled
-* Thunderbolt Boot Support - Disabled
-* Wake From Thunderbolt(TM) Devices - Off
-* Thunderbolt(TM) PCIe Cache-line Size - 128
-* GPIO3 Force Pwr - On
-* Wait time in ms after applying Force Pwr - 200
-* Skip PCI OptionRom - Enabled
-* Security Level - SL0-No Security
-* Reserve mem per phy slot - 32
-* Reserve P mem per phy slot - 32
-* Reserve IO per phy slot - 20
-* Delay Before SX Exit - 300
-* GPIO filter - Enabled
-* Enable CLK REQ - Disabled
-* Enable ASPM - Disabled
-* Enable LTR - Disabled
-* Extra Bus Reserved - 106
-* Reserved Memory - 737
-* Memory Alignment - 26
-* Reserved PMemory - 1184
-* PMemory Alignment - 28
-* Reserve I/O - 0
-* Alpine Ridge XHCI WA - Disabled
+    Advanced
+      Thunderbolt(TM) Configuration
+        * TBT Root port Selector - PCIe slot Thunderbolt card is in
+        * Thunderbolt Usb Support - Disabled
+        * Thunderbolt Boot Support - Disabled
+        * Wake From Thunderbolt(TM) Devices - Off
+        * Thunderbolt(TM) PCIe Cache-line Size - 128
+        * GPIO3 Force Pwr - On
+        * Wait time in ms after applying Force Pwr - 200
+        * Skip PCI OptionRom - Enabled
+        * Security Level - SL0-No Security
+        * Reserve mem per phy slot - 32
+        * Reserve P mem per phy slot - 32
+        * Reserve IO per phy slot - 20
+        * Delay Before SX Exit - 300
+        * GPIO filter - Enabled
+        * Enable CLK REQ - Disabled
+        * Enable ASPM - Disabled
+        * Enable LTR - Disabled
+        * Extra Bus Reserved - 106
+        * Reserved Memory - 737
+        * Memory Alignment - 26
+        * Reserved PMemory - 1184
+        * PMemory Alignment - 28
+        * Reserve I/O - 0
+        * Alpine Ridge XHCI WA - Disabled
 
 # 3. OpenCore config.plist Settings
-* Uncheck `DisableIoMapper` under `Kernel-Quirks` for AppleVTD support.
-  * AppleVTD allows support for devices like Antelope Audio Thunderbolt interfaces or the Apple Thunderbolt-to-Gigabit Ethernet adapter.
-* If present, remove `dart=0`, from boot-args located `NVRAM-Add-7C436110-AB2A-4BBB-A880-FE41995C9F82-boot-args`
+  * Uncheck `DisableIoMapper` under `Kernel-Quirks` for AppleVTD support.
+    * AppleVTD allows support for devices like Antelope Audio Thunderbolt interfaces or the Apple Thunderbolt-to-Gigabit Ethernet adapter.
+  * If present, remove `dart=0`, from boot-args located at `NVRAM-Add-7C436110-AB2A-4BBB-A880-FE41995C9F82-boot-args`
 
 If configured correctly your IOReg should show that you have AppleVTD and DMAC (Direct Memory Access Controller).
 ![](/Thunderbolt/Images/applevtd.png)
 ![](/Thunderbolt/Images/dmac.png)
 
 # 4. Thunderbolt 3
-This section will cover how to configure the Gigabyte GC-Titan Ridge with hot support enabled.
-
 ## GC-Titan Ridge Internal Connections
-* 2x 6-pin PCIe power (Optional)
-  *  Plug in if your devices require more power
-* USB 2.0 (Optional)
-  * Plug in if you want to plug USB 2 devices directly into your cards
-* 5-pin Thunderbolt header
-  * Plug into thunderbolt header or jump pins 3 and 5.  Pins 3 and 5 are the ones furthest away from the PCIe slot like shown below.
+    * 2x 6-pin PCIe power (Optional)
+      *  Plug in if your devices require more power
+    * USB 2.0 (Optional)
+      * Plug in if you want to plug USB 2 devices directly into your card
+    * 5-pin Thunderbolt header
+      * Plug into thunderbolt header or jump pins 3 and 5.  Pins 3 and 5 are the ones furthest away from the PCIe slot like shown below.
   ![](/Thunderbolt/Images/jump3-5.jpeg)
 
 ## Standard or ICM (Internal Connection Manager) Mode Configuration
-1. Once BIOS settings and OpenCore settings are configured you should be able to load macOS with initial Thunderbolt support.  If you look in your IOReg the Thunderbolt device tree should look like this.  
+1. Once BIOS settings and OpenCore settings are configured, you should be able to load macOS with initial Thunderbolt support.  The location of your Thunderbolt card will vary depending on which slot it is occupied in.  For the WS X299 Sage/10G or any other motherboard set as Built-In it should be at PC00.RP05.  You can verify by searching for 'Thunderbolt' in IOReg.
+If you look in your IOReg the Thunderbolt device tree should look like this.  
 ![](/Thunderbolt/Images/Thunderbolt-PreSSDT.png)
-The location of your Thunderbolt card will vary depending on which slot it is occupied in.  For the WS X299 Sage/10G or any other motherboard set as Built-In it should be at PC00.RP05.  You can verify by searching for 'Thunderbolt' in IOReg.
+
 2. For hot-plug support, you will need a Thunderbolt hot-plug SSDT.  Download kgp's SSDT that I modified for OpenCore named 'SSDT-TB3HP.aml' and add the SSDT to your EFI folder under `OC-ACPI`.  Also add an entry in your config.plist under `ACPI-Add`.  It is preferred to add this entry at the very bottom since it relies on method DTGP which is located in SSDT-SBUS-MCHC.aml.
 3.  Reboot your computer and you should have hot plug support!
   * System Report showing two new devices
@@ -118,7 +117,7 @@ Once you reboot, you should have the Thunderbolt Bus pane properly populated and
 For Thunderbolt 4, there are 3 PCIe Thunderbolt cards available using the Maple Ridge controller.  The information below is based on my testing with the ASUS ThunderboltEX 4.
 
 ## Current Observations
-Note these observations are based on the devices tested listed below.  YMMV and issues I'm running into may just be due to these devices.
+Note these observations are based on the devices tested listed below.  Your mileage may vary and issues I ran into may just be device specific.
  * Thunderbolt header may not necessarily be needed or jumped.  macOS recognizes the card on boot without a header plugged in.
  * The 6 pin power and USB 2.0 internal cable have to be connected.  
  * Thunderbolt settings have to be enabled in BIOS.  The Thunderbolt devices load in a different slot with Thunderbolt BIOS settings disabled but the device showed 'No driver installed'.

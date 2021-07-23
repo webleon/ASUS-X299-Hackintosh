@@ -3,50 +3,56 @@
 # Introduction
 The Base EFI folder contains a pre-built EFI using the MacPro7,1 SMBIOS that should be valid for all ASUS X299 motherboards.  It is built using my personal build as a baseline and is up to date using OpenCore 0.7.1 with the OpenCanary GUI.
 
-**[NOTE]**: Some config settings are different than the Skylake-X section of the Dortania OpenCore Vanilla Guide to be compatible with ASUS motherboards.
+**NOTE**: Some config settings are different than the Skylake-X section of the Dortania OpenCore Vanilla Guide to be compatible with ASUS motherboards.
 
 # 1. Recommended BIOS Settings
 * Originally based off kgp's original X299 Clover guide [section B1) ASUS BIOS Configuration](https://www.tonymacx86.com/threads/imac-pro-x299-live-the-future-now-with-macos-10-14-mojave-successful-build-extended-guide.255082/) but modified for the newest BIOS revisions.  It's recommended to use a newer BIOS release.
 * Reset to Default Settings before modifying these settings
 
-## AI Tweaker
-* AI Overclock Tuner - XMP
-* CPU SVID Support - Enabled
+      AI Tweaker
+        * AI Overclock Tuner - XMP
+        * CPU SVID Support - Enabled
 
-## Advanced
-### CPU Configuration
-* MSR Lock Control - **[Disabled]**
-#### CPU Power Management Configuration
-* Enhanced Intel SpeedStep Technology - Enabled
-* Turbo Mode - Enabled
-* Autonomous Core C-State - Enabled
-* Enhanced Halt State (C1E) - Enabled
-* CPU C6 Report - Enabled
-* Package C State - C6(non Retention) state
-* Intel(R) Speed Shift Technology - Enabled
-* MFC Mode Override - OS Native Support
+      Advanced
+        CPU Configuration
+          * MSR Lock Control - Disabled
+          CPU Power Management Configuration
+            * Enhanced Intel SpeedStep Technology - Enabled
+            * Turbo Mode - Enabled
+            * Autonomous Core C-State - Enabled
+            * Enhanced Halt State (C1E) - Enabled
+            * CPU C6 Report - Enabled
+            * Package C State - C6(non Retention) state
+            * Intel(R) Speed Shift Technology - Enabled
+            * MFC Mode Override - OS Native Support
 
-### System Agent (SA) Configuration
-* Intel VT for Directed I/O (VT-d) - Enabled
-### PCI Subsystem Settings
-* Above 4G Decoding - **[Enabled]**
-* Re-Size BAR Support - **[Disabled]**
-### PCH Storage Configuration
-* SATA Mode Selection - AHCI
+        System Agent (SA) Configuration
+          * Intel VT for Directed I/O (VT-d) - Enabled
 
-## Boot
-### CSM (Compatability Support Module)
-* Launch CSM - **[Disabled]**
-### Secure Boot
-* OS Type - Other OS
+        PCI Subsystem Settings
+          * Above 4G Decoding - Enabled
+          * Re-Size BAR Support - Disabled
+
+        PCH Storage Configuration
+          * SATA Mode Selection - AHCI
+
+      Boot
+        CSM (Compatability Support Module)
+          * Launch CSM - Disabled
+
+        Secure Boot
+          * OS Type - Other OS
 
 # 2. config.plist Configuration
-The BASE-EFI is currently configured using the MacPro7,1 SMBIOS.  Please review the configuration below to make adjustments if you want to switch to the iMacPro1,1 SMBIOS.  **[NOTE]**: MacPro7,1 SMBIOS only works on macOS Catalina and higher.
+The BASE-EFI is currently configured using the MacPro7,1 SMBIOS.  Please review the configuration below to make adjustments if you want to switch to the iMacPro1,1 SMBIOS.  
+
+**NOTE**: MacPro7,1 SMBIOS only works on macOS Catalina and higher.
 
 ## Kernel
 ### Add
 1. Ethernet:
-    * WS X299 Sage/10G users will need to replace IntelMausi.kext with [SmallTreeIntel8259x.kext](https://small-tree.com/support/downloads/10-gigabit-ethernet-driver-download-page/) and update the kext entry.  **[NOTE]**: Ubuntu EEPROM modding outlined [here](https://github.com/shinoki7/ASUS-X299-Hackintosh#intel-10-gigabit-nics-with-small-tree-macos-drivers) is required for this kext to work
+    * WS X299 Sage/10G users will need to replace IntelMausi.kext with [SmallTreeIntel8259x.kext](https://small-tree.com/support/downloads/10-gigabit-ethernet-driver-download-page/) and update the kext entry.  
+      * **NOTE**: Ubuntu EEPROM modding outlined [here](https://github.com/shinoki7/ASUS-X299-Hackintosh#intel-10-gigabit-nics-with-small-tree-macos-drivers) is required for this kext to work
     * I211 NICs users like the X299 Deluxe, copy the [SmallTreeIntel82576](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases) kext to your EFI folder and add a new kext entry.
 2. TSCAdjustReset:
     * Replace TSCAdjustReset.kext in your EFI Folder with the version matching your core count located [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/tree/main/BASE-EFI/Kexts/TSCAdjustReset).
@@ -67,7 +73,7 @@ Remember to adjust the Type depending on which SMBIOS you are using.  Either iMa
 1. USB:
     * Please use [this](https://dortania.github.io/OpenCore-Post-Install/usb/intel-mapping/intel.html) as a proper guide to map your USB ports.
     * Once mapped, make sure to replace the `USBInjectAll.kext` entry under `Kernel-Add` with `USBMap.kext`.  Also disable `XhciPortLimit` under `Kernel-Quirks`.
-    * NOTE: The `XhciPortLimit` quirk may not work on macOS 11.3+ so it's recommended to install an older version to map and then update.
+    * **NOTE**: The `XhciPortLimit` quirk may not work on macOS 11.3+ so it's recommended to install an older version to map and then update.
 2. Custom Memory (SMBIOS MacPro7,1 only):
     * Depending on how many memory DIMM slots on your motherboard are filled, rename the Memory Dictionary under `PlatformInfo` and remove the other one.  (I.E. I only have 4 DIMM slots filled, so I renamed `#Memory - 4 DIMMS` to `Memory` and deleted `#Memory - 8 DIMMS` and `#Memory - 2 DIMMS`).
     * Expand `Devices` under `PlatformInfo-Memory-Devices` and adjust the following properties that match your Memory.
@@ -88,6 +94,7 @@ Remember to adjust the Type depending on which SMBIOS you are using.  Either iMa
 ## macOS Monterey Installation Notes
 ### Required
 * Replace CpuTscSync.kext with TSCAdjustReset.kext
+    * Currently CpuTscSync.kext is incompatible with macOS Monterey
 * OpenCore EFI compatible with macOS Big Sur although recommended to upgrade to OpenCore 0.7.1 or newer and associated Lilu kexts for the latest support.
     * OpenCore 0.7.0 and lower need to add boot-arg 'lilubetaall'
 
@@ -97,6 +104,7 @@ Remember to adjust the Type depending on which SMBIOS you are using.  Either iMa
 # Changelog:
 ## Updated required SSDTs (2021.07.07)
 * Reverted required SSDTs to the ones by khronokernel since was getting boot errors with BIOS 3405.
+
 ## OpenCore 0.7.1 (2021.07.05)
 Bootloader / Kexts:
 * Lilu 1.5.4

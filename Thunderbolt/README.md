@@ -58,8 +58,8 @@ If you look in your IOReg the Thunderbolt device tree should look like this.
 ![](/Thunderbolt/Images/Thunderbolt-PreSSDT.png)
 
 2. For hot-plug support, you will need a Thunderbolt hot-plug SSDT and a DTPG SSDT.  
-* Download kgp's SSDT that I modified for OpenCore located [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/blob/main/SSDT/SSDT-TB3HP.aml)
-* If you don't have a DTPG SSDT or SSDT-SBUS-MCHC SSDT, you can download it [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/blob/main/SSDT/SSDT-SBUS-MCHC.aml).
+* Download kgp's SSDT that I modified for OpenCore located [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/blob/main/SSDTs/SSDT-TB3HP.aml)
+* If you don't have a DTPG SSDT or SSDT-SBUS-MCHC SSDT, you can download it [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/blob/main/SSDTs/SSDT-SBUS-MCHC.aml).
 * Add these SSDTs to your EFI folder under `OC-ACPI` and the appropriate entries in your config.plist under `ACPI-Add`.  It is preferred to add `SSDT-TB3HP.aml` at the very bottom since it relies on method DTGP.  
 3.  Reboot your computer and you should have hot plug support!
   * System Report showing two new devices

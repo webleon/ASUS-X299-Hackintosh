@@ -46,7 +46,7 @@ ASUS Pro WS X299 Sage II
 - [x] iMessage, FaceTime, App Store, iTunes Store
 - [x] 2.5G Ethernet
 - [x] 10G Ethernet
-    * Modified EEPROM to work with SmallTree drivers. Refer to section [Intel 10 Gigabit NICs with Small Tree macOS Drivers](https://github.com/shinoki7/ASUS-X299-Hackintosh#intel-10-gigabit-nics-with-small-tree-macos-drivers) for more info.
+    * Modified EEPROM to work with SmallTree drivers. Refer to section [Intel 10 Gigabit NICs with Small Tree macOS Drivers](https://github.com/shinoki7/ASUS-X299-Hackintosh/tree/main/Intel%2010G%20SmallTree) for more info.
 - [x] HEVC, H.264
 - [x] Onboard audio
 - [x] TRIM

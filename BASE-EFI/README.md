@@ -1,13 +1,13 @@
 # BASE-EFI
 
 # Introduction
-The Base EFI folder contains a pre-built EFI using the MacPro7,1 SMBIOS that should be valid for all ASUS X299 motherboards.  It is built using my personal build as a baseline and is up to date using OpenCore 0.7.1 with the OpenCanary GUI.
+The Base EFI folder contains a pre-built EFI with the OpenCanary GUI using the MacPro7,1 SMBIOS that should be valid for all ASUS X299 motherboards.  It is built using my personal build as a baseline.
 
 **NOTE**: Some config settings are different than the Skylake-X section of the Dortania OpenCore Vanilla Guide to be compatible with ASUS motherboards.
 
 # 1. Recommended BIOS Settings
-* Originally based off kgp's original X299 Clover guide [section B1) ASUS BIOS Configuration](https://www.tonymacx86.com/threads/imac-pro-x299-live-the-future-now-with-macos-10-14-mojave-successful-build-extended-guide.255082/) but modified for the newest BIOS revisions.  It's recommended to use a newer BIOS release.
-* Reset to Default Settings before modifying these settings
+* Originally based off kgp's original X299 Clover guide [section B1) ASUS BIOS Configuration](https://www.tonymacx86.com/threads/imac-pro-x299-live-the-future-now-with-macos-10-14-mojave-successful-build-extended-guide.255082/) but modified for the newest BIOS revisions.
+* Reset to Default Settings before adjusting to these settings.  It is recommended to use one of the more recent BIOS revisions.
 
       AI Tweaker
         * AI Overclock Tuner - XMP
@@ -44,20 +44,26 @@ The Base EFI folder contains a pre-built EFI using the MacPro7,1 SMBIOS that sho
           * OS Type - Other OS
 
 # 2. config.plist Configuration
-The BASE-EFI is currently configured using the MacPro7,1 SMBIOS.  Please review the configuration below to make adjustments if you want to switch to the iMacPro1,1 SMBIOS.  
+The BASE-EFI is currently configured using the MacPro7,1 SMBIOS and OpenCore 0.7.2.  Please review the configuration below to make adjustments as necessary.
 
-**NOTE**: MacPro7,1 SMBIOS only works on macOS Catalina and higher.
+**NOTE**: MacPro7,1 SMBIOS only works on macOS Catalina and higher.  Adjust to iMacPro1,1 for macOS Mojave or lower.
 
 ## Kernel
 ### Add
 1. Ethernet:
-    * WS X299 Sage/10G users will need to replace IntelMausi.kext with [SmallTreeIntel8259x.kext](https://small-tree.com/support/downloads/10-gigabit-ethernet-driver-download-page/) and update the kext entry.  
-      * **NOTE**: Ubuntu EEPROM modding outlined [here](https://github.com/shinoki7/ASUS-X299-Hackintosh#intel-10-gigabit-nics-with-small-tree-macos-drivers) is required for this kext to work
-    * I211 NICs users like the X299 Deluxe, copy the [SmallTreeIntel82576](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases) kext to your EFI folder and add a new kext entry.
+    * IntelMausi.kext - Enabled for onboard Ethernet
+    * [SmallTreeIntel8259x.kext](https://small-tree.com/support/downloads/10-gigabit-ethernet-driver-download-page/) - Disabled but required for Intel 10G Ethernet.
+      * **NOTE**: Ubuntu EEPROM modding outlined [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/tree/main/Intel%2010G%20SmallTree#intel-10-gigabit-nics-with-small-tree-macos-drivers) is required for this kext to work
+    * [SmallTreeIntel82576.kext](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases) - Disabled but required for Intel I211 NICs
 2. TSCAdjustReset:
     * Replace TSCAdjustReset.kext in your EFI Folder with the version matching your core count located [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/tree/main/Kexts/TSCAdjustReset).
 3. RestrictEvents:
     * If you are using the iMacPro1,1 SMBIOS, you can delete this entry.
+
+## Misc
+### Security
+1. SecureBootModel:
+    * As of OpenCore 0.7.2, `Default` is set to `x86legacy` which does not work with High Sierra through Catalina.  Refer to the [SecureBootModel section](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#securebootmodel) of the Dortania guide to adjust as needed.
 
 ## PlatformInfo
 You will need to create your own Serial Number and SMUUID.  Instructions can be found [here](https://dortania.github.io/OpenCore-Install-Guide/config-HEDT/skylake-x.html#platforminfo).
@@ -73,7 +79,7 @@ Remember to adjust the Type depending on which SMBIOS you are using.  Either iMa
 1. USB:
     * Please use [this](https://dortania.github.io/OpenCore-Post-Install/usb/intel-mapping/intel.html) as a proper guide to map your USB ports.
     * Once mapped, make sure to replace the `USBInjectAll.kext` entry under `Kernel-Add` with `USBMap.kext`.  Also disable `XhciPortLimit` under `Kernel-Quirks`.
-    * **NOTE**: The `XhciPortLimit` quirk may not work on macOS 11.3+ so it's recommended to install an older version to map and then update.
+    * **NOTE**: The `XhciPortLimit` quirk may not work on macOS 11.3+ so it's recommended to install an older version of macOS to map the ports then update.
 2. Custom Memory (SMBIOS MacPro7,1 only):
     * Depending on how many memory DIMM slots on your motherboard are filled, rename the Memory Dictionary under `PlatformInfo` and remove the other one.  (I.E. I only have 4 DIMM slots filled, so I renamed `#Memory - 4 DIMMS` to `Memory` and deleted `#Memory - 8 DIMMS` and `#Memory - 2 DIMMS`).
     * Expand `Devices` under `PlatformInfo-Memory-Devices` and adjust the following properties that match your Memory.
@@ -95,13 +101,32 @@ Remember to adjust the Type depending on which SMBIOS you are using.  Either iMa
 ### Required
 * Replace CpuTscSync.kext with TSCAdjustReset.kext
     * Currently CpuTscSync.kext is incompatible with macOS Monterey
-* OpenCore EFI compatible with macOS Big Sur although recommended to upgrade to OpenCore 0.7.1 or newer and associated Lilu kexts for the latest support.
+* OpenCore EFI compatible with macOS Big Sur although recommended to upgrade to OpenCore 0.7.2 or newer and associated Lilu kexts for the latest support.
     * OpenCore 0.7.0 and lower need to add boot-arg 'lilubetaall'
 
 ### Tips
-* macOS Monterey update may get stuck in a reboot loop and then fail to install. Modify your config.plist and change `SecureBootModel` to 'Disabled' under `Misc-Security`. When the update is complete, you can change this back to 'Default'.
+* If you are on OpenCore 0.7.1 or lower, the macOS Monterey Installer may get stuck in a reboot loop and then fail to install. Modify your config.plist and change `SecureBootModel` to `Disabled` under `Misc-Security`. When the update is complete, you can change this back to `Default`.
 
 # Changelog:
+## OpenCore 0.7.2 (2021.08.02)
+Bootloader / Kexts:
+* Lilu 1.5.5
+* WhateverGreen 1.5.2
+* AppleALC 1.6.3
+* VirtualSMC 1.2.6
+* SmallTreeIntel8259x.kext
+  * Added but disabled by default
+* SmallTreeIntel82576.kext
+  * Added but disabled by default
+
+config.plist Changes:
+* SSDT - Combined all required SSDTs into SSDT-BASE.aml
+* `ACPI-Quirks-ResetLogoStatus` to False
+* `Kernel-Quirks-DisableLinkedJettison` to True
+* `Kernel-Quirks-DisableLinkedJettison` to False
+* `Misc-Boot-PollAppleHotKeys` to True
+* `Misc-Security-AllowToogleSip` to True
+
 ## Updated required SSDTs (2021.07.07)
 * Reverted required SSDTs to the ones by khronokernel since was getting boot errors with BIOS 3405.
 

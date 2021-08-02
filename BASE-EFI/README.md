@@ -60,11 +60,6 @@ The BASE-EFI is currently configured using the MacPro7,1 SMBIOS and OpenCore 0.7
 3. RestrictEvents:
     * If you are using the iMacPro1,1 SMBIOS, you can delete this entry.
 
-## Misc
-### Security
-1. SecureBootModel:
-    * As of OpenCore 0.7.2, `Default` is set to `x86legacy` which does not work with High Sierra through Catalina.  Refer to the [SecureBootModel section](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#securebootmodel) of the Dortania guide to adjust as needed.
-
 ## PlatformInfo
 You will need to create your own Serial Number and SMUUID.  Instructions can be found [here](https://dortania.github.io/OpenCore-Install-Guide/config-HEDT/skylake-x.html#platforminfo).
 Remember to adjust the Type depending on which SMBIOS you are using.  Either iMacPro1,1 or MacPro7,1
@@ -96,17 +91,6 @@ Remember to adjust the Type depending on which SMBIOS you are using.  Either iMa
     For 8 DIMMS, this would be BANK 7/8/9/10/6/5/4/3.
     * Once mapped make sure to remove `RestrictEvents.kext` under `Kernel-Add` and also delete the kext in your `Kexts` folder under `OC-Kexts`.
 
-# Extras
-## macOS Monterey Installation Notes
-### Required
-* Replace CpuTscSync.kext with TSCAdjustReset.kext
-    * Currently CpuTscSync.kext is incompatible with macOS Monterey
-* OpenCore EFI compatible with macOS Big Sur although recommended to upgrade to OpenCore 0.7.2 or newer and associated Lilu kexts for the latest support.
-    * OpenCore 0.7.0 and lower need to add boot-arg 'lilubetaall'
-
-### Tips
-* If you are on OpenCore 0.7.1 or lower, the macOS Monterey Installer may get stuck in a reboot loop and then fail to install. Modify your config.plist and change `SecureBootModel` to `Disabled` under `Misc-Security`. When the update is complete, you can change this back to `Default`.
-
 # Changelog:
 ## OpenCore 0.7.2 (2021.08.02)
 Bootloader / Kexts:
@@ -126,6 +110,10 @@ config.plist Changes:
 * `Kernel-Quirks-DisableLinkedJettison` to False
 * `Misc-Boot-PollAppleHotKeys` to True
 * `Misc-Security-AllowToogleSip` to True
+* `Misc-Security-SecureBootModel` to Disabled
+  * OpenCore 0.7.2 now defaults to `x86legacy` which only loads on macOS Big Sur and up.
+  * Also adjusted `UEFI-APFS-MinDate` and `UEFI-APFS-MinVersion` to `-1` for APFS support on lower macOS versions.
+  * Refer to the [SecureBootModel section](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#securebootmodel) for more detail.
 
 ## Updated required SSDTs (2021.07.07)
 * Reverted required SSDTs to the ones by khronokernel since was getting boot errors with BIOS 3405.

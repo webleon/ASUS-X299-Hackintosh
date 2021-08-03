@@ -113,7 +113,6 @@ config.plist Changes:
 * SSDT - Combined all required SSDTs into SSDT-BASE.aml
 * `ACPI-Quirks-ResetLogoStatus` to False
 * `Kernel-Quirks-DisableLinkedJettison` to True
-* `Kernel-Quirks-DisableLinkedJettison` to False
 * `Misc-Boot-PollAppleHotKeys` to True
 * `Misc-Security-AllowToogleSip` to True
 * `Misc-Security-SecureBootModel` to Disabled

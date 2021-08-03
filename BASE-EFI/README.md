@@ -60,6 +60,9 @@ The BASE-EFI is currently configured using the MacPro7,1 SMBIOS and OpenCore 0.7
 3. RestrictEvents:
     * If you are using the iMacPro1,1 SMBIOS, you can delete this entry.
 
+## Misc
+As of OpenCore 0.7.2, the `Default` SecureBootModel uses `x86legacy` by default which only loads macOS Big Sur and up.  The BASE-EFI currently has it set to `Disabled` but for proper configuration, refer to the [SecureBootModel section](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#securebootmodel).
+
 ## PlatformInfo
 You will need to create your own Serial Number and SMUUID.  Instructions can be found [here](https://dortania.github.io/OpenCore-Install-Guide/config-HEDT/skylake-x.html#platforminfo).
 Remember to adjust the Type depending on which SMBIOS you are using.  Either iMacPro1,1 or MacPro7,1
@@ -69,6 +72,9 @@ Remember to adjust the Type depending on which SMBIOS you are using.  Either iMa
       * SystemSerialNumber: Serial
       * SystemUUID: SmUUID
   2. If you are using the iMacPro1,1 SMBIOS, you can delete the Memory Dictionaries `#Memory - 2 DIMMS`, `#Memory - 4 DIMMS`, `#Memory - 8 DIMMS`.
+
+## UEFI
+As of OpenCore 0.7.2, APFS drivers only load for macOS Big Sur and above.  The BASE-EFI currently has `UEFI-APFS-MinDate` and `UEFI-APFS-MinVersion` set to `-1` for APFS support on lower macOS versions.  Refer to [OcApfsLib](https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Library/OcApfsLib.h) to adjust these to proper value.
 
 # 3. Post-Install
 1. USB:
@@ -112,8 +118,10 @@ config.plist Changes:
 * `Misc-Security-AllowToogleSip` to True
 * `Misc-Security-SecureBootModel` to Disabled
   * OpenCore 0.7.2 now defaults to `x86legacy` which only loads on macOS Big Sur and up.
-  * Also adjusted `UEFI-APFS-MinDate` and `UEFI-APFS-MinVersion` to `-1` for APFS support on lower macOS versions.
-  * Refer to the [SecureBootModel section](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#securebootmodel) for more detail.
+  * Refer to the [SecureBootModel section](https://dortania.github.io/OpenCore-Post-Install/universal/security/applesecureboot.html#securebootmodel) for more detail on proper configuration.
+* `UEFI-APFS-MinDate` and `UEFI-APFS-MinVersion` to `-1` for APFS support on lower macOS versions.
+  * Refer to [OcApfsLib](https://github.com/acidanthera/OpenCorePkg/blob/master/Include/Acidanthera/Library/OcApfsLib.h) to adjust these to proper value.
+
 
 ## Updated required SSDTs (2021.07.07)
 * Reverted required SSDTs to the ones by khronokernel since was getting boot errors with BIOS 3405.

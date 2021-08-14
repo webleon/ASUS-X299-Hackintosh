@@ -81,7 +81,7 @@ ASUS Pro WS X299 Sage II
 ![](/Personal%20Build/Images/graphics.png)
 
 ### NVME
-![](/Personal%20Build/Images/nvme.png)
+![](/Personal%20Build/Images/NVMExpress.png)
 
 ### USB
 ![](/Personal%20Build/Images/usb.png)

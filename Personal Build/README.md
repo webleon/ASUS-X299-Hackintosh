@@ -22,17 +22,17 @@ ASUS Pro WS X299 Sage II
 | Slot | Speed | Device | Notes |
 | ----- | ----- | ---------------------------------------|-------------------|
 | 1 | x16 | | |
-| 2 | x8 | | |
+| 2 | x8 | Gigabyte GC-Titan Ridge V2.0 | NVM23 with Jumped Pins |
 | 3 | x8 | | |
 | 4 | x8 | | |
 | 5 | x8 | AMD Radeon Pro W5500 | |
-| 6 | x8 | | |
-| 7 | x8 | Intel X550-T2 10G Ethernet Card | |
+| 6 | x8 | Intel X550-T2 10G Ethernet Card | |
+| 7 | x8 | | |
 
 ### M.2/U.2 Layout
 | Slot | Device | Notes |
 | ----- | ---------------------------------------|-------------------|
-| U.2_1 | Gigabyte GC-Titan Ridge V2.0 | Using [U.2 to M.2 Adapter](https://www.amazon.com/gp/product/B01HR0PKJQ/ref=ppx_yo_dt_b_asin_title_o00_s01?ie=UTF8&psc=1) + [M.2 Riser](https://www.amazon.com/gp/product/B07M8LR9NC/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1) |
+| U.2_1 | | |
 | U.2_2 | | |
 | U.2_3 | | |
 | M.2_1 | Broadcom BCM943602CDP | Using [M.2 NGFF Adapter](https://www.amazon.com/gp/product/B07R3XVD54/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1) |
@@ -41,7 +41,7 @@ ASUS Pro WS X299 Sage II
 ## What Works / What Doesn't Work
 - [x] Sleep / Wake
 - [x] Wifi and Bluetooth
-- [x] Handoff, Continuity, AirDrop, Continuity Camera, and Unlock with Apple Watch
+- [x] Handoff, Continuity, AirDrop, Continuity Camera, Universal Control, and Unlock with Apple Watch
 - [x] iMessage, FaceTime, App Store, iTunes Store
 - [x] 2.5G Ethernet
 - [x] 10G Ethernet

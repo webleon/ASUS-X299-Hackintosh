@@ -44,7 +44,7 @@ The Base EFI folder contains a pre-built EFI with the OpenCanary GUI using the M
           * OS Type - Other OS
 
 # 2. config.plist Configuration
-The BASE-EFI is currently configured using the MacPro7,1 SMBIOS and OpenCore 0.7.2.  Please review the configuration below to make adjustments as necessary.
+The BASE-EFI is currently configured using the MacPro7,1 SMBIOS and OpenCore 0.7.3.  Please review the configuration below to make adjustments as necessary.
 
 **NOTE**: MacPro7,1 SMBIOS only works on macOS Catalina and higher.  Adjust to iMacPro1,1 for macOS Mojave or lower.
 
@@ -55,8 +55,6 @@ The BASE-EFI is currently configured using the MacPro7,1 SMBIOS and OpenCore 0.7
     * [SmallTreeIntel8259x.kext](https://small-tree.com/support/downloads/10-gigabit-ethernet-driver-download-page/) - Disabled but required for Intel 10G Ethernet.
       * **NOTE**: Ubuntu EEPROM modding outlined [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/tree/main/Intel%2010G%20SmallTree#intel-10-gigabit-nics-with-small-tree-macos-drivers) is required for this kext to work
     * [SmallTreeIntel82576.kext](https://github.com/khronokernel/SmallTree-I211-AT-patch/releases) - Disabled but required for Intel I211 NICs
-2. TSCAdjustReset:
-    * Replace TSCAdjustReset.kext in your EFI Folder with the version matching your core count located [here](https://github.com/shinoki7/ASUS-X299-Hackintosh/tree/main/Kexts/TSCAdjustReset).
 3. RestrictEvents:
     * If you are using the iMacPro1,1 SMBIOS, you can delete this entry.
 
@@ -98,6 +96,16 @@ As of OpenCore 0.7.2, APFS drivers only load for macOS Big Sur and above.  The B
     * Once mapped make sure to remove `RestrictEvents.kext` under `Kernel-Add` and also delete the kext in your `Kexts` folder under `OC-Kexts`.
 
 # Changelog:
+## OpenCore 0.7.3 (2021.09.06)
+Bootloader / Kexts:
+* CpuTscSync 1.0.4
+  * Switched back since it is now macOS Monterey compatible.  If you are still having issues, revert back to TSCAdjustReset.kext
+* WhateverGreen 1.5.3
+* RestrictEvents 1.0.4
+* AppleALC 1.6.4
+* VirtualSMC 1.2.7
+* Lilu 1.5.6
+
 ## OpenCore 0.7.2 (2021.08.02)
 Bootloader / Kexts:
 * Lilu 1.5.5

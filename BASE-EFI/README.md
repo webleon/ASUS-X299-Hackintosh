@@ -1,7 +1,7 @@
 # BASE-EFI
 
 # Introduction
-The Base EFI folder contains a pre-built EFI with the OpenCanary GUI using the MacPro7,1 SMBIOS that should be valid for all ASUS X299 motherboards.  It is built using my personal build as a baseline.
+The Base EFI folder contains a pre-built EFI with the OpenCanopy GUI using the MacPro7,1 SMBIOS that should be valid for all ASUS X299 motherboards.  It is built using my personal build as a baseline.
 
 **NOTE**: Some config settings are different than the Skylake-X section of the Dortania OpenCore Vanilla Guide to be compatible with ASUS motherboards.
 

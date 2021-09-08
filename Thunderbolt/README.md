@@ -86,8 +86,8 @@ Switching from Standard to Extended is optional, but it brings your system more 
   * [Flashing SPI ROM Chips using Raspberry Pi 3B or 4](https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/post-2080585)
   * [Flashing SPI ROM Chips using 3.3V CH341A Programmer](https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/post-2161463)
 * Patched Thunderbolt Firmware files
-  * [Repository of Patched Thunderbolt Firmware Files](https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/page-1640#post-2087524)
-    * Currently using Z390-AORUS-XTREME-NVM33-Elias64Fr.bin
+  * [Repository of Patched Thunderbolt Firmware Files](https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/post-2087524)
+    * Currently using [TitanRidgeNVM23-Elias64Fr-Mod.bin](https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/post-2085225)
 * Additional Information
   * [Gigabyte Designare Z390 (Thunderbolt 3) + i7-9700K + AMD RX 580](https://www.tonymacx86.com/threads/success-gigabyte-designare-z390-thunderbolt-3-i7-9700k-amd-rx-580.267551/)
 
@@ -114,7 +114,7 @@ Once you reboot, you should have the Thunderbolt Bus pane properly populated and
 ### What Doesn't Work
 * USB 3.2 Gen 2 on macOS 11.3 or higher
   * Have had mixed results trying various NVM firmware versions.  The XHC Controller does not even load on the latest BIOS with Resizable Bar support.
-  * Workaround: Running BIOS 3302 with jumped pins.
+  * Workaround: Running BIOS 0901 with jumped pins.
 
 # 5. Thunderbolt 4
 For Thunderbolt 4, there are 3 PCIe Thunderbolt cards available using the Maple Ridge controller.  The information below is based on my testing with the ASUS ThunderboltEX 4.

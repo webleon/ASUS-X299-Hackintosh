@@ -22,10 +22,10 @@ ASUS Pro WS X299 Sage II
 | Slot | Speed | Device | Notes |
 | ----- | ----- | ---------------------------------------|-------------------|
 | 1 | x16 | | |
-| 2 | x8 | Gigabyte GC-Titan Ridge V2.0 | NVM23 with Jumped Pins |
+| 2 | x8 | Gigabyte GC-Titan Ridge V2.0 | |
 | 3 | x8 | | |
 | 4 | x8 | | |
-| 5 | x8 | AMD Radeon Pro W5500 | vBIOS 113-D3250400-104 |
+| 5 | x8 | AMD Radeon Pro W5500 | |
 | 6 | x8 | Intel X550-T2 10G Ethernet Card | |
 | 7 | x8 | | |
 

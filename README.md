@@ -1,7 +1,5 @@
 # ASUS X299 Hackintosh
 
-# **README:**  This repository is archived as of OpenCore 0.7.3 as I'm selling my hackintosh.
-
 # Introduction
 The ASUS X299 Hackintosh repository contains OpenCore EFI distributions and related files that can be used as a reference when setting up or updating your X299 Hackintosh with the OpenCore bootloader.  While the EFIs can be used as a starting point for all ASUS X299 boards, it is still highly recommended to review the [OpenCore Vanilla Desktop Guide](https://dortania.github.io/OpenCore-Install-Guide/) and [Skylake-X section](https://dortania.github.io/OpenCore-Install-Guide/config-HEDT/skylake-x.html) for a full guide.  These files were created using the ASUS Pro WS X299 Sage II as a baseline.
 
